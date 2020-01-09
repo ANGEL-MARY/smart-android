@@ -4,31 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    app:layout_anchorGravity="center_vertical"
     tools:context=".EntryActivity">
 
-        <Button
-            android:id="@+id/SellerEntry"
+
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="173dp"
-            android:layout_marginLeft="173dp"
-            android:layout_marginTop="134dp"
-            android:text="SELLER "
+            android:gravity="center_vertical"
+            android:text="I want to"
+            android:textAllCaps="true"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.137"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <LinearLayout
+            android:id="@+id/buy_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="126dp"
+            android:background="#fff"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+                <ImageButton
+                    android:id="@+id/buy"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:background="#fff"
+                    android:padding="0dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_buy" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Buy"
+                    android:textSize="18dp"
+                    android:textAllCaps="true"/>
 
 
+        </LinearLayout>
 
-        <Button
-        android:id="@+id/ShopEntry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginLeft="158dp"
-        android:layout_marginTop="83dp"
-        android:text="shop"
-        android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SellerEntry" />
+
+        <LinearLayout
+            android:id="@+id/sell_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="#fff"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buy_layout">
+
+                <ImageButton
+                    android:id="@+id/sell"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:background="#fff"
+                    android:padding="0dp"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_sell" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Sell"
+                    android:textSize="18dp"
+                    android:textAllCaps="true"/>
+
+
+        </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
