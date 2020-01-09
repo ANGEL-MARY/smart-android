@@ -10,17 +10,10 @@
         android:id="@+id/OtpVerification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:layout_marginStart="113dp"
         android:layout_marginLeft="113dp"
         android:layout_marginTop="212dp"
         android:layout_marginBottom="64dp"
-=======
-        android:layout_marginStart="96dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginBottom="28dp"
->>>>>>> 496655628fa679ad59a183703a43d706b179facb
         android:ems="10"
         android:hint="OTP Verification"
         android:inputType="textPersonName"
@@ -28,23 +21,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/ResendOtp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginRight="85dp"
-        android:text="Resend OTP"
-        app:layout_constraintEnd_toEndOf="parent"
-=======
-        android:layout_marginStart="219dp"
-        android:layout_marginLeft="219dp"
-        android:layout_marginTop="35dp"
-        android:text="Resend OTP"
-        app:layout_constraintStart_toStartOf="parent"
->>>>>>> 496655628fa679ad59a183703a43d706b179facb
-        app:layout_constraintTop_toBottomOf="@+id/OtpVerification" />
+        <Button
+            android:id="@+id/ResendOtp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resend OTP"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="481dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

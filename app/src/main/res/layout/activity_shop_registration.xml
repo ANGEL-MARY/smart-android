@@ -6,95 +6,97 @@
     android:layout_height="match_parent"
     tools:context=".ShopRegistrationActivity">
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/shopName"
-        android:layout_width="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:layout_marginStart="99dp"
-        android:layout_marginLeft="99dp"
-=======
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
->>>>>>> 496655628fa679ad59a183703a43d706b179facb
-        android:layout_marginTop="110dp"
-        android:ems="10"
-        android:hint="Shop Name"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/phoneNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:layout_marginStart="99dp"
-        android:layout_marginLeft="99dp"
-=======
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
->>>>>>> 496655628fa679ad59a183703a43d706b179facb
-        android:layout_marginTop="74dp"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="phone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shopName" />
-
-    <EditText
-        android:id="@+id/location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:layout_marginStart="99dp"
-        android:layout_marginLeft="99dp"
-=======
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
->>>>>>> 496655628fa679ad59a183703a43d706b179facb
-        android:layout_marginTop="74dp"
-        android:ems="10"
-        android:hint="Location"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
-
-    <EditText
-        android:id="@+id/typeOfStore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:layout_marginStart="99dp"
-        android:layout_marginLeft="99dp"
-=======
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
->>>>>>> 496655628fa679ad59a183703a43d706b179facb
-        android:layout_marginTop="74dp"
-        android:ems="10"
-        android:hint="Type of Store"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location" />
-
-    <Button
-        android:id="@+id/ShopSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:layout_marginTop="54dp"
-        android:layout_marginEnd="99dp"
-        android:layout_marginRight="99dp"
-        android:text="Submit"
+        android:hint="Shop name"
         app:layout_constraintEnd_toEndOf="parent"
-=======
-        android:layout_marginStart="215dp"
-        android:layout_marginLeft="215dp"
-        android:layout_marginTop="45dp"
-        android:text="Submit"
         app:layout_constraintStart_toStartOf="parent"
->>>>>>> 496655628fa679ad59a183703a43d706b179facb
-        app:layout_constraintTop_toBottomOf="@+id/typeOfStore" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="74dp"
+
+        android:="100dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phoneNumber"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone Number"
+        app:layout_constraintTop_toBottomOf="@+id/shopName"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="74dp"
+
+        android:="100dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/storeType"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type of store"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="74dp"
+
+        android:="100dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/location"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone Number"
+        app:layout_constraintTop_toBottomOf="@+id/storeType"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="74dp"
+
+        android:="100dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/ShopSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="99dp"
+            android:layout_marginRight="99dp"
+            android:text="Submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.793"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="588dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

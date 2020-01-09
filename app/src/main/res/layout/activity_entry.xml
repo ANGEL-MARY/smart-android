@@ -17,37 +17,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="204dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:text="Seller"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
         <Button
-            android:id="@+id/ShopEntry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="93dp"
-            android:text="SHOP"
-            app:layout_constraintTop_toBottomOf="@+id/SellerEntry"
-            tools:layout_editor_absoluteX="173dp" />
-
-
+        android:id="@+id/ShopEntry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="158dp"
         android:layout_marginLeft="158dp"
         android:layout_marginTop="83dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="61dp"
         android:text="shop"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"

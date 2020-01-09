@@ -14,11 +14,9 @@
         <activity android:name=".EntryActivity" />
         <activity android:name=".SellerActivity" />
         <activity android:name=".StockActivity" />
-        <activity android:name=".EntryActivity" />
-        <activity android:name=".SellerActivity" />
         <activity android:name=".OtpVerificationActivity" />
-        <activity android:name=".ShopRegistrationActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ShopRegistrationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
