@@ -4,32 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OtpVerificationActivity">
+    tools:context=".StockActivity">
 
     <EditText
-        android:id="@+id/OtpVerification"
+        android:id="@+id/ItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="220dp"
         android:ems="10"
-        android:hint="OTP Verification"
+        android:hint="Item Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/ResendOtp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/ResendOtp"
+    <EditText
+        android:id="@+id/StockNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="219dp"
-        android:layout_marginLeft="219dp"
-        android:layout_marginTop="35dp"
-        android:text="Resend OTP"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:hint="Stock Details "
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/OtpVerification" />
+        app:layout_constraintTop_toBottomOf="@+id/ItemName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
