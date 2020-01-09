@@ -16,8 +16,13 @@
         android:ems="10"
         android:hint="Seller Name"
         android:inputType="textPersonName"
+<<<<<<< HEAD
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+=======
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="183dp" />
+>>>>>>> 496655628fa679ad59a183703a43d706b179facb
 
     <EditText
         android:id="@+id/SellPhoneNo"
@@ -29,6 +34,7 @@
         android:ems="10"
         android:hint="Phone Number"
         android:inputType="textPersonName"
+<<<<<<< HEAD
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SellerName" />
 
@@ -70,19 +76,28 @@
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Price" />
+=======
+        tools:layout_editor_absoluteX="93dp"
+        tools:layout_editor_absoluteY="293dp" />
+>>>>>>> 496655628fa679ad59a183703a43d706b179facb
 
     <EditText
-        android:id="@+id/Location"
+        android:id="@+id/Address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="93dp"
         android:layout_marginLeft="93dp"
         android:layout_marginTop="42dp"
         android:ems="10"
-        android:hint="Location"
+        android:hint="Address"
         android:inputType="textPersonName"
+<<<<<<< HEAD
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/StockDetails" />
+=======
+        tools:layout_editor_absoluteX="93dp"
+        tools:layout_editor_absoluteY="403dp" />
+>>>>>>> 496655628fa679ad59a183703a43d706b179facb
 
     <Button
         android:id="@+id/SellerSubmit"
@@ -94,7 +109,12 @@
         android:layout_marginEnd="105dp"
         android:layout_marginRight="105dp"
         android:text="Submit"
+<<<<<<< HEAD
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Location" />
+=======
+        tools:layout_editor_absoluteX="218dp"
+        tools:layout_editor_absoluteY="547dp" />
+>>>>>>> 496655628fa679ad59a183703a43d706b179facb
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,8 +10,13 @@
         android:id="@+id/shopName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginStart="99dp"
         android:layout_marginLeft="99dp"
+=======
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+>>>>>>> 496655628fa679ad59a183703a43d706b179facb
         android:layout_marginTop="110dp"
         android:ems="10"
         android:hint="Shop Name"
@@ -23,8 +28,13 @@
         android:id="@+id/phoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginStart="99dp"
         android:layout_marginLeft="99dp"
+=======
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+>>>>>>> 496655628fa679ad59a183703a43d706b179facb
         android:layout_marginTop="74dp"
         android:ems="10"
         android:hint="Phone Number"
@@ -36,8 +46,13 @@
         android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginStart="99dp"
         android:layout_marginLeft="99dp"
+=======
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+>>>>>>> 496655628fa679ad59a183703a43d706b179facb
         android:layout_marginTop="74dp"
         android:ems="10"
         android:hint="Location"
@@ -49,8 +64,13 @@
         android:id="@+id/typeOfStore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginStart="99dp"
         android:layout_marginLeft="99dp"
+=======
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+>>>>>>> 496655628fa679ad59a183703a43d706b179facb
         android:layout_marginTop="74dp"
         android:ems="10"
         android:hint="Type of Store"
@@ -62,11 +82,19 @@
         android:id="@+id/ShopSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginTop="54dp"
         android:layout_marginEnd="99dp"
         android:layout_marginRight="99dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
+=======
+        android:layout_marginStart="215dp"
+        android:layout_marginLeft="215dp"
+        android:layout_marginTop="45dp"
+        android:text="Submit"
+        app:layout_constraintStart_toStartOf="parent"
+>>>>>>> 496655628fa679ad59a183703a43d706b179facb
         app:layout_constraintTop_toBottomOf="@+id/typeOfStore" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

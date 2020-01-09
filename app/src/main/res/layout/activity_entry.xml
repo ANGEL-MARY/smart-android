@@ -10,15 +10,21 @@
         android:id="@+id/SellerEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="108dp"
+=======
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="204dp"
+>>>>>>> 496655628fa679ad59a183703a43d706b179facb
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="Seller"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,9 +32,15 @@
         android:id="@+id/ShopEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginStart="158dp"
         android:layout_marginLeft="158dp"
         android:layout_marginTop="83dp"
+=======
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="61dp"
+>>>>>>> 496655628fa679ad59a183703a43d706b179facb
         android:text="shop"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
