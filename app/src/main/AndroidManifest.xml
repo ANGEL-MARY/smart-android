@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".EntryActivity"></activity>
+        <activity android:name=".SellerActivity"></activity>
+        <activity android:name=".OtpVerificationActivity" />
         <activity android:name=".ShopRegistrationActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
