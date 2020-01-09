@@ -10,67 +10,91 @@
         android:id="@+id/SellerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginLeft="93dp"
+        android:layout_marginTop="42dp"
         android:ems="10"
         android:hint="Seller Name"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="42dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/SellPhoneNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginLeft="93dp"
+        android:layout_marginTop="42dp"
         android:ems="10"
         android:hint="Phone Number"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="135dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SellerName" />
 
     <EditText
         android:id="@+id/Product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginLeft="93dp"
+        android:layout_marginTop="42dp"
         android:ems="10"
         android:hint="Products"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="233dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SellPhoneNo" />
 
     <EditText
         android:id="@+id/Price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginLeft="93dp"
+        android:layout_marginTop="42dp"
         android:ems="10"
         android:hint="Price"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="328dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Product" />
 
     <EditText
         android:id="@+id/StockDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginLeft="93dp"
+        android:layout_marginTop="42dp"
         android:ems="10"
         android:hint="Stock Details"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="430dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Price" />
 
     <EditText
         android:id="@+id/Location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginLeft="93dp"
+        android:layout_marginTop="42dp"
         android:ems="10"
         android:hint="Location"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="519dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StockDetails" />
 
     <Button
         android:id="@+id/SellerSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="218dp"
+        android:layout_marginLeft="218dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginRight="105dp"
         android:text="Submit"
-        tools:layout_editor_absoluteX="218dp"
-        tools:layout_editor_absoluteY="596dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Location" />
 </androidx.constraintlayout.widget.ConstraintLayout>
