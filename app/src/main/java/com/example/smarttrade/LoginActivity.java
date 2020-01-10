@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.smarttrade.config.DataManager;
 import com.google.android.material.button.MaterialButton;
 
 public class LoginActivity extends AppCompatActivity {
@@ -27,6 +28,5 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 }
