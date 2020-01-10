@@ -32,15 +32,13 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(getApplication(), OtpVerificationActivity.class));
-//                finish();
+
                 //To read use getText()
                 name = nameEditText.getText().toString();
                 phone = phonEditText.getText().toString();
 
-
-                Toast.makeText(getApplicationContext(),"Name : "+ name, Toast.LENGTH_LONG).show();
-                Toast.makeText(getApplicationContext(),"Phone : "+ phone, Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getApplication(), OtpVerificationActivity.class));
+                finish();
 
             }
         });
