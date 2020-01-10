@@ -16,11 +16,17 @@ public class OtpVerificationActivity extends AppCompatActivity {
 
     private EditText edtTxtOTP1, edtTxtOTP2, edtTxtOTP3, edtTxtOTP4;
     private TextView txtVwWrongNo;
+    private TextView phoneTextView;
+
+    private String phone="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp_verification);
+        if(getIntent().hasExtra("phone")){
+            phone =  getIntent().getStringExtra("phone");
+        }
 
         // Initialize components
 
@@ -29,8 +35,9 @@ public class OtpVerificationActivity extends AppCompatActivity {
         edtTxtOTP3 = (EditText) findViewById(R.id.edtTxtOTP3);
         edtTxtOTP4 = (EditText) findViewById(R.id.edtTxtOTP4);
         txtVwWrongNo = (TextView) findViewById(R.id.txtVwWrongNo);
+        phoneTextView = findViewById(R.id.phoneNumber);
 
-
+        phoneTextView.setText(phone);
 
         txtVwWrongNo.setOnClickListener(new View.OnClickListener() {
             @Override
