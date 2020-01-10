@@ -37,7 +37,11 @@ public class LoginActivity extends AppCompatActivity {
                 name = nameEditText.getText().toString();
                 phone = phonEditText.getText().toString();
 
-                startActivity(new Intent(getApplication(), OtpVerificationActivity.class));
+
+                Toast.makeText(getApplicationContext(),"Name : "+ name, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Phone : "+ phone, Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getApplication(), OtpVerificationActivity.class)
+                    .putExtra("phone", phone));
                 finish();
 
             }
