@@ -8,7 +8,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/phoneNumberHolder"
+        android:id="@+id/nameHolder"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         app:layout_constraintVertical_bias="0.307">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/phoneNumber"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -36,7 +36,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameHolder"
+        android:id="@+id/phoneHolder"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,10 +48,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumberHolder">
+        app:layout_constraintTop_toBottomOf="@+id/nameHolder">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name"
+            android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
