@@ -49,14 +49,12 @@ public class HomeFragment extends Fragment {
         products = new ArrayList<>();
         productAdapter = new ProductAdapter(getActivity(), products);
         prepareProducts();
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
 
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
         productRecyclerView.setLayoutManager(mLayoutManager);
-        productRecyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
+        productRecyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(8), true));
         productRecyclerView.setAdapter(productAdapter);
         productRecyclerView.setHasFixedSize(true);
-
-
     }
 
     private void prepareProducts(){
@@ -74,6 +72,21 @@ public class HomeFragment extends Fragment {
 
 
         aProduct = new Product("25", "PineApple");
+        products.add(aProduct);
+
+        aProduct = new Product("25", "Mango");
+        products.add(aProduct);
+
+
+        aProduct = new Product("25", "Dosa Mav");
+        products.add(aProduct);
+
+
+        aProduct = new Product("25", "Mixture");
+        products.add(aProduct);
+
+
+        aProduct = new Product("25", "Home made unni appam");
         products.add(aProduct);
 
         productAdapter.notifyDataSetChanged();

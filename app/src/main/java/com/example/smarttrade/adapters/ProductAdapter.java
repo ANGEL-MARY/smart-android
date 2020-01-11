@@ -22,12 +22,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     private Context mContext;
     private List<Product> products;
 
-
     public  ProductAdapter(Context mContext, List<Product> products){
         this.mContext =  mContext;
         this.products =  products;
     }
-
 
     @NonNull
     @Override
@@ -40,7 +38,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product aProduct = products.get(position);
         holder.productName.setText(aProduct.getName());
-        holder.priceName.setText("("+aProduct.getPrice()+")");
+        holder.priceName.setText(aProduct.getPrice()+" Rs");
         Log.d("Adapter", aProduct.getName());
     }
 
