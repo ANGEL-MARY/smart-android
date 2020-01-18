@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.smarttrade.config.DataManager;
 import com.google.android.material.button.MaterialButton;
 
 public class LoginActivity extends AppCompatActivity {
@@ -46,6 +47,5 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
     }
 }
