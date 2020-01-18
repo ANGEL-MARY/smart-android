@@ -34,13 +34,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-            }
-        });
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
                 //To read use getText()
                 name = nameEditText.getText().toString();
                 phone = phonEditText.getText().toString();
