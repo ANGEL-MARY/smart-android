@@ -9,57 +9,60 @@
     android:layout_marginLeft="@dimen/mtrl_card_spacing"
     android:layout_marginTop="@dimen/mtrl_card_spacing"
     android:layout_marginRight="@dimen/mtrl_card_spacing"
-    app:cardElevation="3dp"
-    android:minHeight="240dp">
+    app:cardElevation="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:padding="8dp">
 
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="180dp"
+                android:layout_width="94dp"
+                android:layout_height="126dp"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
-                android:src="@drawable/apple"/>
+                app:srcCompat="@drawable/apple"/>
 
-            <TextView
-                android:id="@+id/productName"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/imageView"
-                android:layout_alignParentTop="true"
-                android:text="ProductName"
-                android:textColor="@color/textColor"
-                android:textSize="18dp"
-                android:textAlignment="center"
-                android:layout_marginTop="8dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"/>
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:layout_gravity="center_vertical">
+                <TextView
+                    android:id="@+id/productName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView"
+                    android:layout_alignParentTop="true"
+                    android:text="ProductName"
+                    android:textColor="@color/textColor"
+                    android:textSize="18dp"
+                    android:layout_marginTop="8dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"/>
 
-            <TextView
-                android:id="@+id/priceValue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="24 Rs"
-                android:textSize="12dp"
-                android:textAlignment="center"
-                android:layout_marginTop="2dp"/>
+                <TextView
+                    android:id="@+id/priceValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="24 Rs"
+                    android:textSize="12dp"
+                    android:layout_marginTop="2dp"/>
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:text="View details"
-                android:textSize="12dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_gravity="center"
-                android:layout_marginTop="-4dp"/>
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:text="View details"
+                    android:textSize="12dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginLeft="-4dp"/>
+            </LinearLayout>
+
         </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

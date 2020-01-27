@@ -50,9 +50,9 @@ public class HomeFragment extends Fragment {
         productAdapter = new ProductAdapter(getActivity(), products);
         prepareProducts();
 
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1);
         productRecyclerView.setLayoutManager(mLayoutManager);
-        productRecyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(8), true));
+        productRecyclerView.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(8), true));
         productRecyclerView.setAdapter(productAdapter);
         productRecyclerView.setHasFixedSize(true);
     }
