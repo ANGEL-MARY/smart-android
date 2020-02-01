@@ -31,10 +31,10 @@ import com.mapbox.mapboxsdk.plugins.places.picker.model.PlacePickerOptions;
 public class SellerActivity extends AppCompatActivity {
 
     private MaterialButton continueButton, pickeLocation;
-    private EditText sellerdeliverrangeEditText,  sellerAddress;
+    private EditText sellerdeliverrangeEditText,  sellerAddressEditText;
 
 
-    private String sellerdeliverrange,  sellerlocation;
+    private String sellerdeliverrange, sellerAddress;
 
     private static final int REQUEST_CODE = 5678, PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=999;
     private double lat =40.7544, lon=-73.9862;
@@ -50,7 +50,7 @@ public class SellerActivity extends AppCompatActivity {
         continueButton = findViewById(R.id.seller);
         pickeLocation = findViewById(R.id.pick_location);
         sellerdeliverrangeEditText = findViewById(R.id.sellerDeliverRange);
-        sellerAddress = findViewById(R.id.seller_address);
+        sellerAddressEditText = findViewById(R.id.seller_address);
 
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -71,11 +71,11 @@ public class SellerActivity extends AppCompatActivity {
 
 
                 sellerdeliverrange = sellerdeliverrangeEditText.getText().toString();
-                sellerlocation = sellerAddress.getText().toString();
+                sellerAddress = sellerAddressEditText.getText().toString();
 
 
                 Toast.makeText(getApplicationContext(), "Sellerdeliverrange : " + sellerdeliverrange, Toast.LENGTH_LONG).show();
-                Toast.makeText(getApplicationContext(), "SellerLocation : " + sellerlocation, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "sellerAddress : " + sellerAddress, Toast.LENGTH_LONG).show();
 
 
                 startActivity(new Intent(getApplication(), MainActivity.class));
