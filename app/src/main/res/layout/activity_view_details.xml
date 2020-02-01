@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="378dp"
-        android:layout_height="599dp"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="196dp"
         android:layout_marginBottom="300dp"
@@ -18,13 +18,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/apple" />
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="323dp"
-        android:layout_height="46dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="420dp"
         android:layout_marginTop="92dp"
         android:ems="10"
@@ -35,58 +35,62 @@
 
     <EditText
         android:id="@+id/price"
-        android:layout_width="207dp"
-        android:layout_height="108dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="69dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:ems="10"
         android:hint="price"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/sellerDetails"
-        app:layout_constraintStart_toEndOf="@+id/imageView2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/sellerDetails"
-        android:layout_width="313dp"
-        android:layout_height="188dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginBottom="475dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="sellerdetails"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="369dp" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="250dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginBottom="95dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="60dp"
         android:text="BuyNow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/addTo"
-        android:layout_width="246dp"
-        android:layout_height="67dp"
-        android:layout_marginEnd="125dp"
-        android:layout_marginBottom="99dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
         android:text="addToCart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/quantity"
         android:layout_width="125dp"
         android:layout_height="35dp"
-        android:layout_marginStart="98dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Quantity"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sellerDetails" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
