@@ -1,7 +1,6 @@
 package com.example.smarttrade;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
@@ -32,7 +31,7 @@ public class ShopRegistrationActivity extends AppCompatActivity {
         continueButton = findViewById(R.id.shopSave);
         shopnameEditText = findViewById(R.id.shopName);
         storetypeEditText = findViewById(R.id.storeType);
-        locationEditText = findViewById(R.id.location);
+        locationEditText = findViewById(R.id.shopAddress);
 
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
