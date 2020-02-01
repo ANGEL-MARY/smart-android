@@ -1,13 +1,18 @@
 package com.example.smarttrade;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +20,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.smarttrade.config.DataManager;
+import com.example.smarttrade.config.Session;
+import com.example.smarttrade.interfaces.RetrofitCallBack;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -33,6 +40,7 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.plugins.places.picker.PlacePicker;
 import com.mapbox.mapboxsdk.plugins.places.picker.model.PlacePickerOptions;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
@@ -47,6 +55,10 @@ public class LoginActivity extends AppCompatActivity {
     private String phone, name;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private Location mLastKnownLocation;
+
+
+    public static final int MY_PERMISSIONS_GET_SMS = 1212;
+
 
 
     @Override
@@ -85,11 +97,39 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
                     phonEditText.setError(null);
-                    Toast.makeText(getApplicationContext(), "Name : " + name, Toast.LENGTH_LONG).show();
-                    Toast.makeText(getApplicationContext(), "Phone : " + phone, Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(getApplication(), OtpVerificationActivity.class)
-                            .putExtra("phone", phone));
-                    finish();
+//                    startActivity(new Intent(getApplication(), OtpVerificationActivity.class)
+//                            .putExtra("phone", phone));
+//                    finish();
+
+                    //send a request to api to verify phone number
+                    DataManager.getDataManager().userLogin(getLoginParams(phone, name), new RetrofitCallBack<String>() {
+                        @Override
+                        public void Success(String status) {
+
+                            if (status == null)
+                                return;
+                            Session.setAccessToken(status);
+                            DataManager.getDataManager().init(LoginActivity.this);
+
+                            Toast.makeText(LoginActivity.this, status, Toast.LENGTH_SHORT);
+
+
+                            startActivity(new Intent(getApplicationContext(), OtpVerificationActivity.class)
+                                    .putExtra("phone",phone)
+                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+
+                            finish();
+
+                        }
+
+                        @Override
+                        public void Failure(String error) {
+
+                            Toast.makeText(LoginActivity.this, error, Toast.LENGTH_SHORT);
+                        }
+                    });
+
+
                 }
 //               goToPickerActivity();
 
@@ -97,8 +137,20 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         getLocationPermission();
+        checkPermission();
         getDeviceLocation();
     }
+
+
+    private HashMap<String, String> getLoginParams(String phoneNumber, String name) {
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("phone", phoneNumber);
+        hashMap.put("name", name);
+        hashMap.put("via", "sms");
+        return hashMap;
+    }
+
 
 
     /**
@@ -134,6 +186,52 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+
+    public boolean checkPermission()
+    {
+
+        int currentAPIVersion = Build.VERSION.SDK_INT;
+        if (currentAPIVersion >= android.os.Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED ) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECEIVE_SMS)) {
+                    AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+                    alertBuilder.setCancelable(true);
+                    alertBuilder.setTitle("Permission necessary");
+                    alertBuilder.setMessage("Receive sms permission is necessary to read otp !!!");
+                    alertBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(LoginActivity.this, new String[]{android.Manifest.permission.RECEIVE_SMS}, MY_PERMISSIONS_GET_SMS);
+                        }
+                    });
+                    AlertDialog alert = alertBuilder.create();
+                    alert.show();
+                } else {
+                    ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.RECEIVE_SMS}, MY_PERMISSIONS_GET_SMS);
+                }
+                return false;
+
+            } else {
+                return true;
+            }
+        } else {
+            return true;
+        }
+
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        switch (requestCode) {
+
+            case MY_PERMISSIONS_GET_SMS:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                }
+                return;
+        }
+    }
 
 
 

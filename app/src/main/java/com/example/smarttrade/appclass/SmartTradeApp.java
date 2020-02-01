@@ -3,6 +3,7 @@ package com.example.smarttrade.appclass;
 import android.app.Application;
 
 import com.example.smarttrade.R;
+import com.example.smarttrade.config.DataManager;
 import com.example.smarttrade.config.Session;
 import com.mapbox.mapboxsdk.Mapbox;
 
@@ -13,6 +14,8 @@ public class SmartTradeApp extends Application {
     public void onCreate() {
         super.onCreate();
         Session.getSession(this);
+
+        DataManager.getDataManager().init(this);
 
 
 

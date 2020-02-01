@@ -10,6 +10,8 @@ public class Auth {
     @SerializedName("refresh_token")
     String refreshToken;
 
+
+    @SerializedName("success")
     String success;
 
     public String getAccessToken() {
