@@ -33,8 +33,10 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.262">
 
         <com.google.android.material.textfield.TextInputLayout
 
@@ -44,12 +46,6 @@
             android:layout_marginTop="74dp"
             android:hint="Shop name">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/shopName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:imeOptions="actionNext"
-                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -80,29 +76,61 @@
             app:layout_constraintTop_toBottomOf="@+id/storeType">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/location"
+                android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Address"
                 android:imeOptions="actionDone"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/shopSave"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/shopName"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="64dp"
-            android:text="@string/continue_text"
-            android:textAllCaps="true"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:strokeColor="@color/colorPrimary"
-            app:strokeWidth="2dp" />
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="text" />
 
+        <EditText
+            android:id="@+id/shopName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="shop name"
+            android:inputType="textPersonName" />
 
 
     </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/pick_location2"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Pick your location"
+        android:textAllCaps="true"
+        android:textSize="15sp"
+        app:icon="@drawable/ic_location_searching_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="2dp"
+        tools:layout_editor_absoluteY="528dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/shopSave"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/continue_text"
+        android:textAllCaps="true"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="2dp"
+        tools:layout_editor_absoluteY="642dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
