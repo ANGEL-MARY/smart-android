@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.smarttrade.config.DataManager;
+import com.example.smarttrade.interfaces.RetrofitCallBack;
+import com.example.smarttrade.models.Seller;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,7 +31,9 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.plugins.places.picker.PlacePicker;
 import com.mapbox.mapboxsdk.plugins.places.picker.model.PlacePickerOptions;
 
-public class SellerActivity extends AppCompatActivity {
+import java.util.HashMap;
+
+public class SellerActivity extends AppCompatActivity{
 
     private MaterialButton continueButton, pickeLocation;
     private EditText sellerdeliverrangeEditText,  sellerAddressEditText;
@@ -73,15 +78,33 @@ public class SellerActivity extends AppCompatActivity {
                 sellerdeliverrange = sellerdeliverrangeEditText.getText().toString();
                 sellerAddress = sellerAddressEditText.getText().toString();
 
+                DataManager.getDataManager().sellerRegistration(getsellerparams(sellerdeliverrange, sellerAddress, lat, lon), new RetrofitCallBack<Seller>() {
+                    @Override
+                    public void Success(Seller data) {
 
-                Toast.makeText(getApplicationContext(), "Sellerdeliverrange : " + sellerdeliverrange, Toast.LENGTH_LONG).show();
-                Toast.makeText(getApplicationContext(), "sellerAddress : " + sellerAddress, Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplication(), MainActivity.class));
+                    }
 
+                    @Override
+                    public void Failure(String error) {
 
-                startActivity(new Intent(getApplication(), MainActivity.class));
+                    }
+                });
+
             }
         });
 
+    }
+    private HashMap<String, String> getsellerparams(String sellerdeliverrange, String sellerAddress,double latitude,double longitude){
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("range",sellerdeliverrange);
+        hashMap.put("address", sellerAddress);
+        hashMap.put("latitude", latitude+"");
+        hashMap.put("longitude", longitude+"");
+
+
+        return hashMap;
     }
 
 

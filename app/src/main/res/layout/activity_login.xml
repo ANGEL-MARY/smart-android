@@ -28,8 +28,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:imeOptions="actionNext"
-            android:inputType="text"
-            android:maxLength="10" />
+            android:inputType="text"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,7 +52,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:imeOptions="actionDone"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:maxLength="10"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

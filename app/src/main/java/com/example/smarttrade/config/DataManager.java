@@ -6,6 +6,11 @@ import android.util.Log;
 
 import com.example.smarttrade.interfaces.RetrofitCallBack;
 import com.example.smarttrade.models.Auth;
+import com.example.smarttrade.models.Buyer;
+import com.example.smarttrade.models.Cart;
+import com.example.smarttrade.models.Product;
+import com.example.smarttrade.models.ResponseResult;
+import com.example.smarttrade.models.Seller;
 import com.example.smarttrade.retrofit.AppAPIInterface;
 import com.example.smarttrade.retrofit.AppClient;
 
@@ -92,4 +97,43 @@ public class DataManager {
         });
 
     }
+    public void sellerRegistration(HashMap<String, String> sellerParams, final  RetrofitCallBack<Seller> retrofitCallBack){
+        Call<ResponseResult<Seller>> responseCall =  appAPIInterface.sellerRegistration(sellerParams);
+        responseCall.enqueue(new Callback<ResponseResult<Seller>>() {
+            @Override
+            public void onResponse(Call<ResponseResult<Seller>> call, Response<ResponseResult<Seller>> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getSuccess().equals("true")){
+                        retrofitCallBack.Success(response.body().getData());
+                    }else{
+                        retrofitCallBack.Failure("Something went wrong");
+                    }
+                }else {
+                    retrofitCallBack.Failure("Some error happened !!");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseResult<Seller>> call, Throwable t) {
+
+                retrofitCallBack.Failure("Some error happened !!");
+            }
+        });
+
+
+    }
+    public void buyerRegistration(HashMap<String, String> buyerParams, final  RetrofitCallBack<Buyer> retrofitCallBack){
+        Call<ResponseResult<Buyer>> responseCall = appAPIInterface.buyerRegistration(buyerParams);
+
+    }
+    public void productRegistration(HashMap<String, String> productParams, final  RetrofitCallBack<Product> retrofitCallBack){
+        Call<ResponseResult<Product>> responseCall = appAPIInterface.productRegistration(productParams);
+
+    }
+    public void cartRegistration(HashMap<String, String> cartParams, final  RetrofitCallBack<Cart> retrofitCallBack){
+        Call<ResponseResult<Cart>> responseCall = appAPIInterface.cartRegistration(cartParams);
+
+    }
+
 }

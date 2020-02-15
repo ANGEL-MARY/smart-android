@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AppClient {
 
-    public static final String MASTEERURL = "http://192.168.43.168:3000/";
+    public static final String MASTEERURL = "http://192.168.43.230:3000/";
 
     public static Retrofit retrofit = null;
 
