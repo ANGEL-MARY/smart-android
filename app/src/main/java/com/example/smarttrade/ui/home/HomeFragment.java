@@ -1,5 +1,6 @@
 package com.example.smarttrade.ui.home;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smarttrade.R;
+import com.example.smarttrade.ViewDetails;
 import com.example.smarttrade.adapters.ProductAdapter;
 import com.example.smarttrade.models.Product;
 
@@ -33,6 +35,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView productRecyclerView;
     private ProductAdapter productAdapter;
     private ArrayList<Product> products;
+    private ProductAdapter.ProjectAdapterInterface projectAdapterInterface;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -46,8 +49,14 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         productRecyclerView = view.findViewById(R.id.productRecyclerView);
 
+        projectAdapterInterface = new ProductAdapter.ProjectAdapterInterface() {
+            @Override
+            public void onViewDetailsClicked() {
+                startActivity(new Intent(getActivity(), ViewDetails.class));
+            }
+        };
         products = new ArrayList<>();
-        productAdapter = new ProductAdapter(getActivity(), products);
+        productAdapter = new ProductAdapter(getActivity(), products, projectAdapterInterface);
         prepareProducts();
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1);
