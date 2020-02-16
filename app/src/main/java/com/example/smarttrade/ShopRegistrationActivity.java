@@ -26,6 +26,8 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.plugins.places.picker.PlacePicker;
 import com.mapbox.mapboxsdk.plugins.places.picker.model.PlacePickerOptions;
 
+import java.util.HashMap;
+
 public class ShopRegistrationActivity extends AppCompatActivity {
 
     private MaterialButton continueButton, pickLocationButton;
@@ -68,10 +70,6 @@ public class ShopRegistrationActivity extends AppCompatActivity {
                 location = locationEditText.getText().toString();
 
 
-                Toast.makeText(getApplicationContext(),"Shopname : "+ shopname, Toast.LENGTH_LONG).show();
-                Toast.makeText(getApplicationContext(),"Storetype: "+ storetype, Toast.LENGTH_LONG).show();
-                Toast.makeText(getApplicationContext(),"Location : "+ location, Toast.LENGTH_LONG).show();
-
 
                 startActivity(new Intent(getApplication(), MainActivity.class));
             }
@@ -84,6 +82,18 @@ public class ShopRegistrationActivity extends AppCompatActivity {
                 goToPickerActivity();
             }
         });
+    }
+    private HashMap<String, String> getbuyerparams(String shopname, String storetype, String location, double latitude, double longitude){
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("shopname",shopname);
+        hashMap.put("storetype", storetype);
+        hashMap.put("address", location);
+        hashMap.put("latitude", latitude+"");
+        hashMap.put("longitude", longitude+"");
+
+
+        return hashMap;
     }
 
     /**
