@@ -15,6 +15,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.smarttrade.config.DataManager;
+import com.example.smarttrade.interfaces.RetrofitCallBack;
+import com.example.smarttrade.models.Buyer;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -68,10 +71,19 @@ public class ShopRegistrationActivity extends AppCompatActivity {
                 shopname = shopnameEditText.getText().toString();
                 storetype = storetypeEditText.getText().toString();
                 location = locationEditText.getText().toString();
+                DataManager.getDataManager().buyerRegistration(getbuyerparams(shopname, storetype, location, lat, lon), new RetrofitCallBack<Buyer>() {
+                    @Override
+                    public void Success(Buyer data) {
 
+                        startActivity(new Intent(getApplication(), MainActivity.class));
+                    }
 
+                    @Override
+                    public void Failure(String error) {
 
-                startActivity(new Intent(getApplication(), MainActivity.class));
+                    }
+                });
+
             }
         });
 
