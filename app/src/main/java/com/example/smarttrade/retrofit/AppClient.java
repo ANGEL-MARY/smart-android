@@ -1,6 +1,7 @@
 package com.example.smarttrade.retrofit;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.example.smarttrade.config.Session;
 
@@ -20,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AppClient {
 
-    public static final String MASTEERURL = "http://192.168.43.169:3000/";
+    public static final String MASTEERURL = "http://192.168.137.183:3000/";
 
     public static Retrofit retrofit = null;
 
@@ -34,10 +35,12 @@ public class AppClient {
         httpClient.readTimeout(15, TimeUnit.SECONDS);
         httpClient.writeTimeout(15, TimeUnit.SECONDS);
 
+        Log.d("OKhh", Session.getAccessToken() + "No");
         if (!TextUtils.isEmpty(Session.getAccessToken())) {
             httpClient.addInterceptor(new Interceptor() {
                 @Override
                 public okhttp3.Response intercept(Chain chain) throws IOException {
+                    Log.d("OKhh", Session.getAccessToken());
                     Request request = chain.request().newBuilder()
                             .header("x-access-token", Session.getAccessToken())
                             .build();

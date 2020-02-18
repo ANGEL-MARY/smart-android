@@ -25,6 +25,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.smarttrade.R;
 import com.example.smarttrade.ViewDetails;
 import com.example.smarttrade.adapters.ProductAdapter;
+import com.example.smarttrade.config.DataManager;
+import com.example.smarttrade.interfaces.RetrofitCallBack;
 import com.example.smarttrade.models.Product;
 
 import java.util.ArrayList;
@@ -33,6 +35,7 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private RecyclerView productRecyclerView;
+    private TextView  infoTextView;
     private ProductAdapter productAdapter;
     private ArrayList<Product> products;
     private ProductAdapter.ProjectAdapterInterface projectAdapterInterface;
@@ -48,6 +51,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         productRecyclerView = view.findViewById(R.id.productRecyclerView);
+        infoTextView = view.findViewById(R.id.info_text);
 
         projectAdapterInterface = new ProductAdapter.ProjectAdapterInterface() {
             @Override
@@ -57,50 +61,39 @@ public class HomeFragment extends Fragment {
         };
         products = new ArrayList<>();
         productAdapter = new ProductAdapter(getActivity(), products, projectAdapterInterface);
-        prepareProducts();
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1);
         productRecyclerView.setLayoutManager(mLayoutManager);
         productRecyclerView.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(8), true));
         productRecyclerView.setAdapter(productAdapter);
         productRecyclerView.setHasFixedSize(true);
+
+        getProducts();
     }
 
-    private void prepareProducts(){
 
-        Product aProduct = new Product("25", "Mango");
-        products.add(aProduct);
+    private void getProducts(){
+        DataManager.getDataManager().getProducts(new RetrofitCallBack<ArrayList<Product>>() {
+            @Override
+            public void Success(ArrayList<Product> data) {
+                    if(data.size() == 0){
+                        productRecyclerView.setVisibility(View.GONE);
+                        infoTextView.setVisibility(View.VISIBLE);
+                    }else{
 
+                        productRecyclerView.setVisibility(View.VISIBLE);
+                        infoTextView.setVisibility(View.GONE);
+                        products = data;
+                        productAdapter.notifyDataSetChanged();
+                    }
+            }
 
-        aProduct = new Product("25", "Apple");
-        products.add(aProduct);
+            @Override
+            public void Failure(String error) {
 
-
-        aProduct = new Product("25", "Orange");
-        products.add(aProduct);
-
-
-        aProduct = new Product("25", "PineApple");
-        products.add(aProduct);
-
-        aProduct = new Product("25", "Mango");
-        products.add(aProduct);
-
-
-        aProduct = new Product("25", "Dosa Mav");
-        products.add(aProduct);
-
-
-        aProduct = new Product("25", "Mixture");
-        products.add(aProduct);
-
-
-        aProduct = new Product("25", "Home made unni appam");
-        products.add(aProduct);
-
-        productAdapter.notifyDataSetChanged();
+            }
+        });
     }
-
 
 
     /**

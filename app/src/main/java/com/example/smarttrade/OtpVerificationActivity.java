@@ -14,8 +14,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.smarttrade.config.Constants;
+import com.example.smarttrade.config.DataManager;
+import com.example.smarttrade.config.Session;
+import com.example.smarttrade.interfaces.RetrofitCallBack;
+import com.example.smarttrade.models.Auth;
+import com.google.android.material.button.MaterialButton;
+
+import java.util.HashMap;
 
 public class OtpVerificationActivity extends AppCompatActivity {
 
@@ -121,7 +129,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (edtTxtOTP4.getText().toString().length() == 1 )     //size as per your requirement
                 {
-                    verifyUserOTP();
+                    verifyUserOTP(edtTxtOTP1.getText().toString()+edtTxtOTP2.getText().toString()+edtTxtOTP3.getText().toString()+edtTxtOTP4.getText().toString());
                 }
             }
 
@@ -137,12 +145,40 @@ public class OtpVerificationActivity extends AppCompatActivity {
 
 
 
-    private void verifyUserOTP(){
-        startActivity(new Intent(this,EntryActivity.class ));
+    private void verifyUserOTP(String otp){
+        DataManager.getDataManager().verifyUser(getVerifyParams(phone, otp), new RetrofitCallBack<Auth>() {
+            @Override
+            public void Success(Auth data) {
+                Session.setAccessToken(data.getAccessToken());
+                Session.setName(data.getUser().getName());
+                Session.setUserVerification(true);
+                DataManager.getDataManager().init(OtpVerificationActivity.this);
+                if(data.getUser().getType()!= null){
+                    String userType = data.getUser().getType();
+                    Session.setUserType(userType);
+                    if(userType.equals("seller"))
+                        startActivity(new Intent(OtpVerificationActivity.this, MainActivity.class));
+                    else
+                        startActivity(new Intent(OtpVerificationActivity.this, MainActivity.class));
+                }else
+                    startActivity(new Intent(OtpVerificationActivity.this, EntryActivity.class));
+            }
+
+            @Override
+            public void Failure(String error) {
+
+            }
+        });
+
     }
 
 
-
+    private HashMap<String, String> getVerifyParams(String phoneNumber, String otp) {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("phone", phoneNumber);
+        hashMap.put("otp", otp);
+        return hashMap;
+    }
 
 
     @Override
@@ -202,7 +238,6 @@ public class OtpVerificationActivity extends AppCompatActivity {
                 }
             }
 
-            verifyUserOTP();
         }
 
     }

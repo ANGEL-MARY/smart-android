@@ -55,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
     private String phone, name;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private Location mLastKnownLocation;
+    private boolean isVerified =  false;
+
 
 
     public static final int MY_PERMISSIONS_GET_SMS = 1212;
@@ -102,16 +104,13 @@ public class LoginActivity extends AppCompatActivity {
 //                    finish();
 
                     //send a request to api to verify phone number
-                    DataManager.getDataManager().userLogin(getLoginParams(phone, name), new RetrofitCallBack<String>() {
+                    DataManager.getDataManager().userLogin(getLoginParams(phone, name), new RetrofitCallBack<Boolean>() {
                         @Override
-                        public void Success(String status) {
+                        public void Success(Boolean status) {
 
-                            if (status == null)
+                            if (!status)
                                 return;
-                            Session.setAccessToken(status);
-                            DataManager.getDataManager().init(LoginActivity.this);
-
-                            Toast.makeText(LoginActivity.this, status, Toast.LENGTH_SHORT);
+                            Toast.makeText(LoginActivity.this, "Login", Toast.LENGTH_SHORT);
 
 
                             startActivity(new Intent(getApplicationContext(), OtpVerificationActivity.class)
@@ -136,8 +135,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        getLocationPermission();
         checkPermission();
+        getLocationPermission();
         getDeviceLocation();
     }
 

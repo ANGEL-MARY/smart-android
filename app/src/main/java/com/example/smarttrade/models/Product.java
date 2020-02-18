@@ -4,30 +4,48 @@ import com.google.gson.annotations.SerializedName;
 
 public class Product {
 
-    @SerializedName("name")
-    String name;
+    @SerializedName("item")
+    Item item;
+
+
+    @SerializedName("sell_method")
+    String sellMethod;
 
     @SerializedName("price")
     String price;
 
-    public Product(String price, String name){
-        this.name = name;
+    @SerializedName("packet_weight")
+    String packetWeight;
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public String getPacketWeight() {
+        return packetWeight;
+    }
+
+    public void setPacketWeight(String packetWeight) {
+        this.packetWeight = packetWeight;
+    }
+
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public void setName(String name){
-        this.name =  name;
-    }
-    public String getName() {
-        return name;
+    public String getPrice() {
+        return price;
     }
 
-    public void setPrice(String price){
-        this.price =  price;
+    public String getSellMethod() {
+        return sellMethod;
     }
 
-    public  String getPrice(){
-        return  price;
+    public void setSellMethod(String sellMethod) {
+        this.sellMethod = sellMethod;
     }
-
 }

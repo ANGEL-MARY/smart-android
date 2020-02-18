@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_vertical">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productRecyclerView"
@@ -12,5 +13,19 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:scrollbars="vertical"/>
+
+    <TextView
+        android:id="@+id/info_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No products to show"
+        android:textColor="@color/textColor"
+        android:textSize="24dp"
+        android:shadowColor="#eee"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone"/>
 
 </LinearLayout>

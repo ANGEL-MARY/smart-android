@@ -22,13 +22,22 @@ public class Session {
         return sharedPreferences.getString("access_token", "");
     }
 
-    public static void setRefreshToken(String token) {
-        editor.putString("refresh_token", token).apply();
+    public static void setName(String name) {
+        editor.putString("name", name).apply();
     }
 
-    public static String getRefreshToken() {
-        return sharedPreferences.getString("refresh_token", "");
+    public static String getName() {
+        return sharedPreferences.getString("name", "");
     }
+
+    public static void setUserType(String userType) {
+        editor.putString("user_type", userType).apply();
+    }
+
+    public static String getUserType() {
+        return sharedPreferences.getString("user_type", "");
+    }
+
 
 
     public static void setUserVerification(boolean status) {

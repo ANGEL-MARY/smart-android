@@ -14,6 +14,7 @@ import com.example.smarttrade.models.Seller;
 import com.example.smarttrade.retrofit.AppAPIInterface;
 import com.example.smarttrade.retrofit.AppClient;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -58,7 +59,7 @@ public class DataManager {
 //        });
 //    }
 
-    public void userLogin(HashMap<String, String> loginParms, final  RetrofitCallBack<String> retrofitCallBack){
+    public void userLogin(HashMap<String, String> loginParms, final  RetrofitCallBack<Boolean> retrofitCallBack){
         Call<Auth> responseCall = AppClient.getAPiClient().create(AppAPIInterface.class).userLogin(loginParms);
         responseCall.enqueue(new Callback<Auth>() {
             @Override
@@ -78,13 +79,13 @@ public class DataManager {
         });
     }
 
-    public void verifyUser(HashMap<String, String> otpparams, final RetrofitCallBack<String> retrofitCallBack) {
-        Call<Auth> responseCall = appAPIInterface.verifyUser(otpparams);
+    public void verifyUser(HashMap<String, String> otpparams, final RetrofitCallBack<Auth> retrofitCallBack) {
+        Call<Auth> responseCall = AppClient.getAPiClient().create(AppAPIInterface.class).verifyUser(otpparams);
         responseCall.enqueue(new Callback<Auth>() {
             @Override
             public void onResponse(Call<Auth> call, Response<Auth> response) {
                 if (response.isSuccessful()) {
-                    retrofitCallBack.Success(response.body().getAccessToken());
+                    retrofitCallBack.Success(response.body());
                 } else {
                     retrofitCallBack.Failure("Some error happened !!");
                 }
@@ -134,6 +135,32 @@ public class DataManager {
     public void cartRegistration(HashMap<String, String> cartParams, final  RetrofitCallBack<Cart> retrofitCallBack){
         Call<ResponseResult<Cart>> responseCall = appAPIInterface.cartRegistration(cartParams);
 
+    }
+
+
+    // Products
+
+    public  void  getProducts(final RetrofitCallBack<ArrayList<Product>> retrofitCallBack){
+        Call<ResponseResult<ArrayList<Product>>> responseCall = appAPIInterface.getProducts();
+        responseCall.enqueue(new Callback<ResponseResult<ArrayList<Product>>>() {
+            @Override
+            public void onResponse(Call<ResponseResult<ArrayList<Product>>> call, Response<ResponseResult<ArrayList<Product>>> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getSuccess().equals("true")){
+                        retrofitCallBack.Success(response.body().getData());
+                    }else{
+                        retrofitCallBack.Failure("Something went wrong");
+                    }
+                }else {
+                    retrofitCallBack.Failure("Some error happened !!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseResult<ArrayList<Product>>> call, Throwable t) {
+                retrofitCallBack.Failure("Some error happened !!");
+            }
+        });
     }
 
 }

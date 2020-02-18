@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Auth {
 
-    @SerializedName("token")
+    @SerializedName("access_token")
     String accessToken;
 
     @SerializedName("refresh_token")
@@ -12,7 +12,11 @@ public class Auth {
 
 
     @SerializedName("success")
-    String success;
+    Boolean success;
+
+
+    @SerializedName("user")
+    User user;
 
     public String getAccessToken() {
         return accessToken;
@@ -30,12 +34,19 @@ public class Auth {
         this.refreshToken = refreshToken;
     }
 
-    public String getSuccess() {
+    public Boolean getSuccess() {
         return success;
     }
 
-    public void setSuccess(String success) {
+    public void setSuccess(Boolean success) {
         this.success = success;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

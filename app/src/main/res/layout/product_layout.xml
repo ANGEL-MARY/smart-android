@@ -19,7 +19,7 @@
 
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/productImage"
                 android:layout_width="94dp"
                 android:layout_height="126dp"
                 android:layout_centerHorizontal="true"

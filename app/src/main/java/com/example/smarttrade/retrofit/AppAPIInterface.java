@@ -7,11 +7,13 @@ import com.example.smarttrade.models.Product;
 import com.example.smarttrade.models.ResponseResult;
 import com.example.smarttrade.models.Seller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
@@ -25,7 +27,7 @@ public interface AppAPIInterface {
 
     @Headers({"Accept: application/json"})
     @FormUrlEncoded()
-    @POST("user/verify")
+    @POST("users/verify")
     Call<Auth> verifyUser(@FieldMap HashMap<String, String> params);
 
     @Headers({"Accept: application/json"})
@@ -49,6 +51,9 @@ public interface AppAPIInterface {
     Call<ResponseResult<Product>> productRegistration(@FieldMap HashMap<String, String> params);
 
 
+    // Products
 
+    @GET("products/all/")
+    Call<ResponseResult<ArrayList<Product>>> getProducts();
 
 }
