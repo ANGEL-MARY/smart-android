@@ -59,14 +59,8 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(getActivity(), ViewDetails.class));
             }
         };
-        products = new ArrayList<>();
-        productAdapter = new ProductAdapter(getActivity(), products, projectAdapterInterface);
 
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1);
-        productRecyclerView.setLayoutManager(mLayoutManager);
-        productRecyclerView.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(8), true));
-        productRecyclerView.setAdapter(productAdapter);
-        productRecyclerView.setHasFixedSize(true);
+
 
         getProducts();
     }
@@ -84,6 +78,13 @@ public class HomeFragment extends Fragment {
                         productRecyclerView.setVisibility(View.VISIBLE);
                         infoTextView.setVisibility(View.GONE);
                         products = data;
+                        productAdapter = new ProductAdapter(getActivity(), products, projectAdapterInterface);
+
+                        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1);
+                        productRecyclerView.setLayoutManager(mLayoutManager);
+                        productRecyclerView.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(8), true));
+                        productRecyclerView.setAdapter(productAdapter);
+                        productRecyclerView.setHasFixedSize(true);
                         productAdapter.notifyDataSetChanged();
                     }
             }
