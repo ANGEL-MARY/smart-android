@@ -1,4 +1,4 @@
-package com.example.smarttrade.ui.gallery;
+package com.example.smarttrade.ui.cart;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

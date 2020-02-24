@@ -16,6 +16,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface AppAPIInterface {
 
@@ -55,5 +56,15 @@ public interface AppAPIInterface {
 
     @GET("products/all/")
     Call<ResponseResult<ArrayList<Product>>> getProducts();
+
+
+    @GET("products/single/{productId}")
+    Call<ResponseResult<Product>> getProduct(@Path("productId") String productId);
+
+
+    //Carts
+
+    @GET("cart/")
+    Call<ResponseResult<ArrayList<Cart>>> getCarts();
 
 }

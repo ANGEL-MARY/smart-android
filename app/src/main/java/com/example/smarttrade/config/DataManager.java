@@ -163,4 +163,55 @@ public class DataManager {
         });
     }
 
+    public void getProduct(String productId, final RetrofitCallBack<Product> retrofitCallBack){
+        Call<ResponseResult<Product>> responseCall =  appAPIInterface.getProduct(productId);
+        responseCall.enqueue(new Callback<ResponseResult<Product>>() {
+            @Override
+            public void onResponse(Call<ResponseResult<Product>> call, Response<ResponseResult<Product>> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getSuccess().equals("true")){
+                        retrofitCallBack.Success(response.body().getData());
+                    }else{
+                        retrofitCallBack.Failure("Something went wrong");
+                    }
+                }else {
+                    retrofitCallBack.Failure("Some error happened !!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseResult<Product>> call, Throwable t) {
+                retrofitCallBack.Failure("Some error happened !!");
+            }
+        });
+    }
+
+    ////////////
+    //  Cart  //
+    ////////////
+
+    public void getCarts(final RetrofitCallBack<ArrayList<Cart>> retrofitCallBack){
+        Call<ResponseResult<ArrayList<Cart>>> responseCall = appAPIInterface.getCarts();
+        responseCall.enqueue(new Callback<ResponseResult<ArrayList<Cart>>>() {
+            @Override
+            public void onResponse(Call<ResponseResult<ArrayList<Cart>>> call, Response<ResponseResult<ArrayList<Cart>>> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getSuccess().equals("true")){
+                        retrofitCallBack.Success(response.body().getData());
+                    }else{
+                        retrofitCallBack.Failure("Something went wrong");
+                    }
+                }else {
+                    retrofitCallBack.Failure("Some error happened !!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseResult<ArrayList<Cart>>> call, Throwable t) {
+                retrofitCallBack.Failure("Some error happened !!");
+            }
+        });
+    }
+
 }
+

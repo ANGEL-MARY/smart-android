@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Product {
 
+    @SerializedName("_id")
+    String id;
+
     @SerializedName("item")
     Item item;
 
@@ -16,6 +19,14 @@ public class Product {
 
     @SerializedName("packet_weight")
     String packetWeight;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Item getItem() {
         return item;

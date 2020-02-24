@@ -3,16 +3,29 @@ package com.example.smarttrade.models;
 import com.google.gson.annotations.SerializedName;
 
 public class Cart {
+
+
+    @SerializedName("_id")
+    String id;
+
+
     @SerializedName("product")
-    String product;
+    Product product;
 
     @SerializedName("current_price")
     String current_price;
 
+    public String getId() {
+        return id;
+    }
 
-    public String getProduct() { return product; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public void setProduct(String product) { this.product = product; }
+    public Product getProduct() { return product; }
+
+    public void setProduct(Product product) { this.product = product; }
 
     public String getCurrent_price() { return current_price; }
 
