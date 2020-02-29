@@ -1,4 +1,4 @@
-package com.example.smarttrade.ui.slideshow;
+package com.example.smarttrade.ui.orders;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.smarttrade.R;
 
-public class SlideshowFragment extends Fragment {
+public class OrdersFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private com.example.smarttrade.ui.slideshow.OrdersViewModel ordersViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
+        ordersViewModel =
+                ViewModelProviders.of(this).get(com.example.smarttrade.ui.slideshow.OrdersViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_orders, container, false);
         final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(this, new Observer<String>() {
+        ordersViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

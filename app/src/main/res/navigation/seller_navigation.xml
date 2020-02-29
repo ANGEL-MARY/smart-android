@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/seller_navigation"
+    app:startDestination="@id/nav_seller_product">
+
+    <fragment
+        android:id="@+id/nav_seller_product"
+        android:name="com.example.smarttrade.ui.sellerhome.SellerHomeFragment"
+        android:label="My Products"
+        tools:layout="@layout/fragment_cart" />
+
+    <fragment
+        android:id="@+id/nav_seller_orders"
+        android:name="com.example.smarttrade.ui.sellerorders.OrdersFragment"
+        android:label="@string/menu_orders"
+        tools:layout="@layout/fragment_orders" />
+
+
+</navigation>

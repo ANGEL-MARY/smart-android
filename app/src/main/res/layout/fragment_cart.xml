@@ -27,7 +27,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:text="Buy now"
-        app:layout_constraint="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -42,7 +41,6 @@
         android:shadowDy="2"
         android:shadowDx="3"
         android:shadowColor="#eeeeee"
-        app:layout_constraintBottom_toBottomOf="@+id/materialButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

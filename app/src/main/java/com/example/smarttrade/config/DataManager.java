@@ -146,7 +146,7 @@ public class DataManager {
             @Override
             public void onResponse(Call<ResponseResult<ArrayList<Product>>> call, Response<ResponseResult<ArrayList<Product>>> response) {
                 if(response.isSuccessful()){
-                    if(response.body().getSuccess().equals("true")){
+                    if(response.body().getSuccess()){
                         retrofitCallBack.Success(response.body().getData());
                     }else{
                         retrofitCallBack.Failure("Something went wrong");
@@ -169,7 +169,7 @@ public class DataManager {
             @Override
             public void onResponse(Call<ResponseResult<Product>> call, Response<ResponseResult<Product>> response) {
                 if(response.isSuccessful()){
-                    if(response.body().getSuccess().equals("true")){
+                    if(response.body().getSuccess()){
                         retrofitCallBack.Success(response.body().getData());
                     }else{
                         retrofitCallBack.Failure("Something went wrong");
@@ -186,6 +186,31 @@ public class DataManager {
         });
     }
 
+    public void  removeProduct(String productId, final RetrofitCallBack<Product> retrofitCallBack){
+        Call<ResponseResult<Product>> responseCall = appAPIInterface.removeProduct(productId);
+        responseCall.enqueue(new Callback<ResponseResult<Product>>() {
+            @Override
+            public void onResponse(Call<ResponseResult<Product>> call, Response<ResponseResult<Product>> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getSuccess()){
+                        retrofitCallBack.Success(response.body().getData());
+                    }else{
+                        retrofitCallBack.Failure("Something went wrong");
+                    }
+                }else {
+                    retrofitCallBack.Failure("Some error happened !!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseResult<Product>> call, Throwable t) {
+                retrofitCallBack.Failure("Something went wrong");
+            }
+        });
+    }
+
+
+
     ////////////
     //  Cart  //
     ////////////
@@ -196,7 +221,7 @@ public class DataManager {
             @Override
             public void onResponse(Call<ResponseResult<ArrayList<Cart>>> call, Response<ResponseResult<ArrayList<Cart>>> response) {
                 if(response.isSuccessful()){
-                    if(response.body().getSuccess().equals("true")){
+                    if(response.body().getSuccess()){
                         retrofitCallBack.Success(response.body().getData());
                     }else{
                         retrofitCallBack.Failure("Something went wrong");
@@ -213,5 +238,50 @@ public class DataManager {
         });
     }
 
+    public void addCart(HashMap<String, String> cartParams, final  RetrofitCallBack<Cart> retrofitCallBack){
+        Call<ResponseResult<Cart>> responseCall = appAPIInterface.addCart(cartParams);
+        responseCall.enqueue(new Callback<ResponseResult<Cart>>() {
+            @Override
+            public void onResponse(Call<ResponseResult<Cart>> call, Response<ResponseResult<Cart>> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getSuccess()){
+                        retrofitCallBack.Success(response.body().getData());
+                    }else{
+                        retrofitCallBack.Failure("Something went wrong");
+                    }
+                }else {
+                    retrofitCallBack.Failure("Some error happened !!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseResult<Cart>> call, Throwable t) {
+                retrofitCallBack.Failure("Some error happened !!");
+            }
+        });
+    }
+
+    public  void removeCart(String cartId, final  RetrofitCallBack<String> retrofitCallBack){
+        Call<ResponseResult<String>> responseCall =  appAPIInterface.removeCart(cartId);
+        responseCall.enqueue(new Callback<ResponseResult<String>>() {
+            @Override
+            public void onResponse(Call<ResponseResult<String>> call, Response<ResponseResult<String>> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getSuccess().equals("true")){
+                        retrofitCallBack.Success(response.body().getData());
+                    }else{
+                        retrofitCallBack.Failure("Something went wrong");
+                    }
+                }else {
+                    retrofitCallBack.Failure("Some error happened !!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseResult<String>> call, Throwable t) {
+                retrofitCallBack.Failure("Some error happened !!");
+            }
+        });
+    }
 }
 

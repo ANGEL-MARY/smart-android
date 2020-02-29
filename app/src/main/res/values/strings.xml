@@ -25,9 +25,8 @@
 
     <string name="menu_shop">Shop</string>
     <string name="menu_sign_out">Logout</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
+    <string name="menu_cart">Cart</string>
+    <string name="menu_orders">My orders</string>
 
     <string name="title_activity_maps">Current Place Details</string>
     <string name="default_info_title">Default Location</string>

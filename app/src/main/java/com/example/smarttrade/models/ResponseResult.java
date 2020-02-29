@@ -2,7 +2,7 @@ package com.example.smarttrade.models;
 
 public class ResponseResult<T> {
 
-    String success;
+    Boolean success;
 
     T data;
 
@@ -14,11 +14,11 @@ public class ResponseResult<T> {
         this.data = data;
     }
 
-    public String getSuccess() {
+    public Boolean getSuccess() {
         return success;
     }
 
-    public void setSuccess(String success) {
+    public void setSuccess(Boolean success) {
         this.success = success;
     }
 

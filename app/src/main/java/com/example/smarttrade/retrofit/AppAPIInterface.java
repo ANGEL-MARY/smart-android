@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -57,14 +58,27 @@ public interface AppAPIInterface {
     @GET("products/all/")
     Call<ResponseResult<ArrayList<Product>>> getProducts();
 
-
     @GET("products/single/{productId}")
     Call<ResponseResult<Product>> getProduct(@Path("productId") String productId);
+
+    @DELETE("products/{productId}")
+    Call<ResponseResult<Product>> removeProduct(@Path("productId") String productId);
 
 
     //Carts
 
     @GET("cart/")
     Call<ResponseResult<ArrayList<Cart>>> getCarts();
+
+    @Headers({"Accept: application/json"})
+    @FormUrlEncoded()
+    @POST("carts/")
+    Call<ResponseResult<Cart>> addCart(@FieldMap HashMap<String, String> cartParams);
+
+    @DELETE("carts/{cartId}")
+    Call<ResponseResult<String>> removeCart(@Path("cartId") String cartId);
+
+    // Orders
+
 
 }

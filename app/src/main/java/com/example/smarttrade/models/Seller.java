@@ -3,6 +3,10 @@ package com.example.smarttrade.models;
 import com.google.gson.annotations.SerializedName;
 
 public class Seller {
+
+    @SerializedName("_id")
+    String id;
+
     @SerializedName("range")
     String range;
 
@@ -10,11 +14,18 @@ public class Seller {
     String address;
 
     @SerializedName("latitude")
-    double latitude;
+    Double latitude;
 
     @SerializedName("longitude")
-    double longitude;
+    Double longitude;
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
 
     public String getRange() { return range; }
 
@@ -24,11 +35,11 @@ public class Seller {
 
     public void setAddress(String address) { this.address= address; }
 
-    public Double getlatitude() { return latitude; }
+    public Double getLatitude() { return latitude; }
 
     public void setLatitude(Double latitude) { this.latitude= latitude; }
 
-    public Double getlongitude (){ return longitude; }
+    public Double getLongitude (){ return longitude; }
 
     public void setLongitude(Double longitude) { this.longitude= longitude;}
 }
