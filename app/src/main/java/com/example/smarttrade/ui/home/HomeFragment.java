@@ -56,7 +56,13 @@ public class HomeFragment extends Fragment {
         projectAdapterInterface = new ProductAdapter.ProjectAdapterInterface() {
             @Override
             public void onViewDetailsClicked(String productId) {
+
                 startActivity(new Intent(getActivity(), ViewDetails.class).putExtra("productId", productId));
+            }
+
+            @Override
+            public void onEditViewClicked(String productId) {
+
             }
         };
 

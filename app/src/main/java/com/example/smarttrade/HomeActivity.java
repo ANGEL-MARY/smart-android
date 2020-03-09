@@ -14,7 +14,13 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         if(Session.getUserVerification()){
-            startActivity(new Intent(this, SellerMainActivity.class));
+
+
+            if(Session.getUserType().equals("seller"))
+                startActivity(new Intent(this, SellerMainActivity.class));
+            else
+                startActivity(new Intent(this, MainActivity.class));
+
             finish();
         }
         else{

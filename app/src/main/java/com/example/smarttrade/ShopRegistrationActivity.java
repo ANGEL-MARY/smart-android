@@ -74,8 +74,8 @@ public class ShopRegistrationActivity extends AppCompatActivity {
                 DataManager.getDataManager().buyerRegistration(getbuyerparams(shopname, storetype, location, lat, lon), new RetrofitCallBack<Buyer>() {
                     @Override
                     public void Success(Buyer data) {
-
-                        startActivity(new Intent(getApplication(), MainActivity.class));
+                        startActivity(new Intent(ShopRegistrationActivity.this, MainActivity.class)
+                                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                     }
 
                     @Override

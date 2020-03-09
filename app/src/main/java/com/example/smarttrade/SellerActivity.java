@@ -82,7 +82,8 @@ public class SellerActivity extends AppCompatActivity{
                     @Override
                     public void Success(Seller data) {
 
-                        startActivity(new Intent(getApplication(), MainActivity.class));
+                        startActivity(new Intent(getApplication(), SellerMainActivity.class)
+                                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                     }
 
                     @Override

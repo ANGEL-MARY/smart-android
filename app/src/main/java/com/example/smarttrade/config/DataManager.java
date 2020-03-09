@@ -104,7 +104,7 @@ public class DataManager {
             @Override
             public void onResponse(Call<ResponseResult<Seller>> call, Response<ResponseResult<Seller>> response) {
                 if(response.isSuccessful()){
-                    if(response.body().getSuccess().equals("true")){
+                    if(response.body().getSuccess()){
                         retrofitCallBack.Success(response.body().getData());
                     }else{
                         retrofitCallBack.Failure("Something went wrong");
@@ -126,15 +126,25 @@ public class DataManager {
     }
     public void buyerRegistration(HashMap<String, String> buyerParams, final  RetrofitCallBack<Buyer> retrofitCallBack){
         Call<ResponseResult<Buyer>> responseCall = appAPIInterface.buyerRegistration(buyerParams);
+        responseCall.enqueue(new Callback<ResponseResult<Buyer>>() {
+            @Override
+            public void onResponse(Call<ResponseResult<Buyer>> call, Response<ResponseResult<Buyer>> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getSuccess()){
+                        retrofitCallBack.Success(response.body().getData());
+                    }else{
+                        retrofitCallBack.Failure("Something went wrong");
+                    }
+                }else {
+                    retrofitCallBack.Failure("Some error happened !!");
+                }
+            }
 
-    }
-    public void productRegistration(HashMap<String, String> productParams, final  RetrofitCallBack<Product> retrofitCallBack){
-        Call<ResponseResult<Product>> responseCall = appAPIInterface.productRegistration(productParams);
-
-    }
-    public void cartRegistration(HashMap<String, String> cartParams, final  RetrofitCallBack<Cart> retrofitCallBack){
-        Call<ResponseResult<Cart>> responseCall = appAPIInterface.cartRegistration(cartParams);
-
+            @Override
+            public void onFailure(Call<ResponseResult<Buyer>> call, Throwable t) {
+                retrofitCallBack.Failure("Some error happened !!");
+            }
+        });
     }
 
 

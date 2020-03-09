@@ -48,4 +48,12 @@ public class Session {
         return sharedPreferences.getBoolean("verification", false);
     }
 
+
+    public static void  clearCache(){
+        editor.putString("name", "").apply();
+        editor.putString("user_type", "").apply();
+        editor.putString("access_token", "").apply();
+        editor.putBoolean("verification", false).apply();
+    }
+
 }

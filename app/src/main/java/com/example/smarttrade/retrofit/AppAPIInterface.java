@@ -39,19 +39,8 @@ public interface AppAPIInterface {
 
     @Headers({"Accept: application/json"})
     @FormUrlEncoded()
-    @POST("users/login")
+    @POST("buyer/")
     Call<ResponseResult<Buyer>> buyerRegistration(@FieldMap HashMap<String, String> params);
-
-    @Headers({"Accept: application/json"})
-    @FormUrlEncoded()
-    @POST("users/login")
-    Call<ResponseResult<Cart>> cartRegistration(@FieldMap HashMap<String, String> params);
-
-    @Headers({"Accept: application/json"})
-    @FormUrlEncoded()
-    @POST("users/login")
-    Call<ResponseResult<Product>> productRegistration(@FieldMap HashMap<String, String> params);
-
 
     // Products
 

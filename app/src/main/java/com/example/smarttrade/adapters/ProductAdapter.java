@@ -25,6 +25,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     private Context mContext;
     private List<Product> products;
     private ProjectAdapterInterface adaperInterfce;
+    private boolean hasToShowStockDetails =  false;
 
     public  ProductAdapter(Context mContext, List<Product> products, ProjectAdapterInterface adaperInterfce){
         this.mContext =  mContext;
@@ -32,8 +33,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         this.adaperInterfce = adaperInterfce;
     }
 
+    public void setHasToShowStockDetails(boolean hasToShowStockDetails) {
+        this.hasToShowStockDetails = hasToShowStockDetails;
+    }
+
     public interface ProjectAdapterInterface{
         public void onViewDetailsClicked(String productId);
+        public void onEditViewClicked(String productId);
     }
 
     @NonNull
@@ -55,6 +61,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             }
         });
         Glide.with(mContext).load(AppClient.MASTEERURL+ aProduct.getItem().getImageUrl()).placeholder(R.drawable.shop_placeholder).into(holder.productImage);
+
+
+        if(hasToShowStockDetails){
+            holder.stockDetails.setVisibility(View.VISIBLE);
+            holder.editButton.setVisibility(View.VISIBLE);
+            holder.button.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -63,16 +76,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     public class ProductViewHolder extends RecyclerView.ViewHolder {
-        public TextView name, priceName;
-        MaterialButton button;
+        public TextView name, priceName, stockDetails;
+        MaterialButton button, editButton;
         ImageView productImage;
 
         public ProductViewHolder(View view) {
             super(view);
             productImage = view.findViewById(R.id.productImage);
             priceName =  view.findViewById(R.id.priceValue);
+            stockDetails = view.findViewById(R.id.stockDetails);
             name = view.findViewById(R.id.productName);
             button = view.findViewById(R.id.view_details);
+            editButton = view.findViewById(R.id.edit_details);
         }
     }
 }

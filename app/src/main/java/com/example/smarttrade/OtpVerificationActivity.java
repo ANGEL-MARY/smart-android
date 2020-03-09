@@ -157,9 +157,11 @@ public class OtpVerificationActivity extends AppCompatActivity {
                     String userType = data.getUser().getType();
                     Session.setUserType(userType);
                     if(userType.equals("seller"))
-                        startActivity(new Intent(OtpVerificationActivity.this, MainActivity.class));
+                        startActivity(new Intent(OtpVerificationActivity.this, MainActivity.class)
+                                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                     else
-                        startActivity(new Intent(OtpVerificationActivity.this, MainActivity.class));
+                        startActivity(new Intent(OtpVerificationActivity.this, SellerMainActivity.class)
+                                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 }else
                     startActivity(new Intent(OtpVerificationActivity.this, EntryActivity.class));
             }
