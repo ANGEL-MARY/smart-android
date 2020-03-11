@@ -16,8 +16,6 @@ import com.example.smarttrade.R;
 
 public class OrdersFragment extends Fragment {
 
-    private OrdersViewModel ordersViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.seller_orders_fragment, container, false);

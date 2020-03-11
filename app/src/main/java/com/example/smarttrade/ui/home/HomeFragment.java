@@ -33,7 +33,6 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
     private RecyclerView productRecyclerView;
     private TextView  infoTextView;
     private ProductAdapter productAdapter;
@@ -58,10 +57,16 @@ public class HomeFragment extends Fragment {
             public void onViewDetailsClicked(String productId) {
 
                 startActivity(new Intent(getActivity(), ViewDetails.class).putExtra("productId", productId));
+
             }
 
             @Override
             public void onEditViewClicked(String productId) {
+
+            }
+
+            @Override
+            public void onDeleteViewClicked(String productId) {
 
             }
         };
@@ -95,7 +100,8 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void Failure(String error) {
-
+                productRecyclerView.setVisibility(View.GONE);
+                infoTextView.setVisibility(View.VISIBLE);
             }
         });
     }

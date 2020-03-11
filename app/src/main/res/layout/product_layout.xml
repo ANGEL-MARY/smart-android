@@ -74,16 +74,32 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_marginLeft="-4dp"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/edit_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:text="Edit or add details"
-                    android:textSize="12dp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:layout_marginLeft="-4dp"
-                    android:visibility="gone"/>
+               <LinearLayout
+                   android:id="@+id/edit_layout"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal"
+                   android:visibility="gone">
+                   <com.google.android.material.button.MaterialButton
+                       android:id="@+id/edit_details"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       style="@style/Widget.MaterialComponents.Button.TextButton"
+                       android:text="Edit"
+                       android:textSize="12dp"
+                       android:textColor="@color/colorPrimaryDark"
+                       android:layout_marginLeft="-4dp"/>
+
+                   <com.google.android.material.button.MaterialButton
+                       android:id="@+id/remove_details"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       style="@style/Widget.MaterialComponents.Button.TextButton"
+                       android:text="Remove"
+                       android:textSize="12dp"
+                       android:textColor="@color/colorPrimaryDark"
+                       android:layout_marginLeft="-4dp"/>
+               </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>

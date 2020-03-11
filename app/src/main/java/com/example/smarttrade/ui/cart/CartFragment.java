@@ -23,7 +23,6 @@ import java.util.ArrayList;
 
 public class CartFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
     private RecyclerView cartItems;
     private MaterialButton buyNowButton;
     private TextView emptyCart;

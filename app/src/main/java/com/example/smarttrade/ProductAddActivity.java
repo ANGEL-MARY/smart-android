@@ -35,9 +35,9 @@ public class ProductAddActivity extends AppCompatActivity {
         packetButton = findViewById(R.id.Packet);
         looseButton = findViewById(R.id.Loose);
         addButton = findViewById(R.id.Add);
-        productnameEditText = findViewById(R.id.ProductName);
-        priceEditText = findViewById(R.id.PriceName);
-        numberofstocksEditText = findViewById(R.id.StockDetails);
+        productnameEditText = findViewById(R.id.product_name);
+        priceEditText = findViewById(R.id.product_price);
+        numberofstocksEditText = findViewById(R.id.product_stock);
 
 
         addButton.setOnClickListener(new View.OnClickListener() {

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public interface ProjectAdapterInterface{
         public void onViewDetailsClicked(String productId);
         public void onEditViewClicked(String productId);
+        public void onDeleteViewClicked(String productId);
     }
 
     @NonNull
@@ -65,7 +67,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         if(hasToShowStockDetails){
             holder.stockDetails.setVisibility(View.VISIBLE);
-            holder.editButton.setVisibility(View.VISIBLE);
+            holder.editLayout.setVisibility(View.VISIBLE);
             holder.button.setVisibility(View.GONE);
         }
     }
@@ -77,8 +79,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     public class ProductViewHolder extends RecyclerView.ViewHolder {
         public TextView name, priceName, stockDetails;
-        MaterialButton button, editButton;
+        MaterialButton button, editButton, removeButton;
         ImageView productImage;
+        LinearLayout editLayout;
 
         public ProductViewHolder(View view) {
             super(view);
@@ -88,6 +91,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             name = view.findViewById(R.id.productName);
             button = view.findViewById(R.id.view_details);
             editButton = view.findViewById(R.id.edit_details);
+            removeButton =  view.findViewById(R.id.remove_details);
+            editLayout = view.findViewById(R.id.edit_layout);
         }
     }
 }
