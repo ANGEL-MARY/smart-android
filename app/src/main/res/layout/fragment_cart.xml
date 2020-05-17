@@ -35,16 +35,18 @@
         android:id="@+id/cart_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:shadowColor="#eeeeee"
+        android:shadowDx="3"
+        android:shadowDy="2"
+        android:shadowRadius="2"
         android:text="Nothing in the cart"
         android:textSize="21dp"
-        android:shadowRadius="2"
-        android:shadowDy="2"
-        android:shadowDx="3"
-        android:shadowColor="#eeeeee"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/cart_buy_now"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

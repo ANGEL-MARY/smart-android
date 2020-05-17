@@ -28,12 +28,14 @@ import com.example.smarttrade.adapters.ProductAdapter;
 import com.example.smarttrade.config.DataManager;
 import com.example.smarttrade.interfaces.RetrofitCallBack;
 import com.example.smarttrade.models.Product;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
     private RecyclerView productRecyclerView;
+    private MaterialCardView productCard;
     private TextView  infoTextView;
     private ProductAdapter productAdapter;
     private ArrayList<Product> products;

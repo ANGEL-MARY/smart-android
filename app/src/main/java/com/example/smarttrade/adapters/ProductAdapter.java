@@ -18,6 +18,7 @@ import com.example.smarttrade.R;
 import com.example.smarttrade.models.Product;
 import com.example.smarttrade.retrofit.AppClient;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
 
@@ -62,6 +63,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 adaperInterfce.onViewDetailsClicked(aProduct.getId());
             }
         });
+        holder.productCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adaperInterfce.onViewDetailsClicked(aProduct.getId());
+            }
+        });
         Glide.with(mContext).load(AppClient.MASTEERURL+ aProduct.getItem().getImageUrl()).placeholder(R.drawable.shop_placeholder).into(holder.productImage);
 
 
@@ -82,9 +89,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         MaterialButton button, editButton, removeButton;
         ImageView productImage;
         LinearLayout editLayout;
+        MaterialCardView productCard;
 
         public ProductViewHolder(View view) {
             super(view);
+            productCard = view.findViewById(R.id.product_card);
             productImage = view.findViewById(R.id.productImage);
             priceName =  view.findViewById(R.id.priceValue);
             stockDetails = view.findViewById(R.id.stockDetails);

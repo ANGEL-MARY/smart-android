@@ -39,7 +39,7 @@ public class ShopRegistrationActivity extends AppCompatActivity {
 
     private String shopname, storetype, location;
     private static final int REQUEST_CODE = 5678, PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=999;
-    private double lat =40.7544, lon=-73.9862;
+    private double lat = 0, lon=0;
     private boolean mLocationPermissionGranted;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private Location mLastKnownLocation;
@@ -71,19 +71,38 @@ public class ShopRegistrationActivity extends AppCompatActivity {
                 shopname = shopnameEditText.getText().toString();
                 storetype = storetypeEditText.getText().toString();
                 location = locationEditText.getText().toString();
-                DataManager.getDataManager().buyerRegistration(getbuyerparams(shopname, storetype, location, lat, lon), new RetrofitCallBack<Buyer>() {
-                    @Override
-                    public void Success(Buyer data) {
-                        startActivity(new Intent(ShopRegistrationActivity.this, MainActivity.class)
-                                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-                    }
 
-                    @Override
-                    public void Failure(String error) {
+                if(shopname.length() == 0){
 
-                    }
-                });
+                    shopnameEditText.setError("Shop name is required");
+                    shopnameEditText.findFocus();
+                }
+                else if(storetype.length() == 0){
 
+                    storetypeEditText.setError("Store type is required");
+                    storetypeEditText.findFocus();
+                }
+                else if(location.length() == 0){
+
+                    locationEditText.setError("Address is required");
+                    locationEditText.findFocus();
+                }
+                else if(lat == 0&& lon ==0 )
+                    Toast.makeText(getApplicationContext(), "Please pick a location", Toast.LENGTH_SHORT).show();
+
+                if(shopname.length() == 0 && storetype.length() == 0 && location.length() == 0 && lat == 0&& lon ==0 )
+                    DataManager.getDataManager().buyerRegistration(getbuyerparams(shopname, storetype, location, lat, lon), new RetrofitCallBack<Buyer>() {
+                        @Override
+                        public void Success(Buyer data) {
+                            startActivity(new Intent(ShopRegistrationActivity.this, MainActivity.class)
+                                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                        }
+
+                        @Override
+                        public void Failure(String error) {
+
+                        }
+                    });
             }
         });
 

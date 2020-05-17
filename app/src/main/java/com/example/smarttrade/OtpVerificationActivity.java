@@ -156,6 +156,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
                 if(data.getUser().getType()!= null){
                     String userType = data.getUser().getType();
                     Session.setUserType(userType);
+                    Toast.makeText(getApplicationContext(), userType, Toast.LENGTH_LONG).show();
                     if(userType.equals("seller"))
                         startActivity(new Intent(OtpVerificationActivity.this, MainActivity.class)
                                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));

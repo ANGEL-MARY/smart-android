@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.smarttrade.config.DataManager;
 import com.example.smarttrade.interfaces.RetrofitCallBack;
+import com.example.smarttrade.models.Cart;
 import com.example.smarttrade.models.Product;
 import com.example.smarttrade.retrofit.AppClient;
 import com.google.android.material.button.MaterialButton;
@@ -28,7 +29,7 @@ public class ViewDetails extends AppCompatActivity {
     private ImageView productImage;
     private Button BuynowButton, addTocartButton;
 
-
+    private  Product product;
     private String productId;
 
     @Override
@@ -56,8 +57,22 @@ public class ViewDetails extends AppCompatActivity {
         addTocartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(product != null)
+                DataManager.getDataManager().addCart(getCartParams(product.getId(), product.getPrice()), new RetrofitCallBack<Cart>() {
+                    @Override
+                    public void Success(Cart data) {
+                        Toast.makeText(getApplicationContext(), "Item added to cart", Toast.LENGTH_LONG).show();
+                    }
+                    @Override
+                    public void Failure(String error) {
+
+                        Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
+
+
 
         BuynowButton.setOnClickListener(new View.OnClickListener() {
 
@@ -70,11 +85,22 @@ public class ViewDetails extends AppCompatActivity {
         getProdcut(productId);
     }
 
+
+    private HashMap<String, String> getCartParams(String product, String current_price) {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("product", product);
+        hashMap.put("current_price", current_price);
+        return hashMap;
+    }
+
+
     public  void  getProdcut(final String productId){
         DataManager.getDataManager().getProduct(productId, new RetrofitCallBack<Product>() {
             @Override
             public void Success(Product data) {
                 productNameTextView.setText(data.getItem().getName());
+                if(data != null)
+                    product = data;
                 String price = data.getPrice();
                 if(data.getSellMethod().equals("packet"))
                     price += "Rs / Packet";

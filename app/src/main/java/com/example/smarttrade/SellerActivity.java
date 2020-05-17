@@ -42,7 +42,7 @@ public class SellerActivity extends AppCompatActivity{
     private String sellerdeliverrange, sellerAddress;
 
     private static final int REQUEST_CODE = 5678, PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=999;
-    private double lat =40.7544, lon=-73.9862;
+    private double lat = 0, lon=0;
     private boolean mLocationPermissionGranted;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private Location mLastKnownLocation;
@@ -77,6 +77,14 @@ public class SellerActivity extends AppCompatActivity{
 
                 sellerdeliverrange = sellerdeliverrangeEditText.getText().toString();
                 sellerAddress = sellerAddressEditText.getText().toString();
+                if(sellerAddress.length() == 0){
+                    sellerdeliverrangeEditText.findFocus();
+                    sellerdeliverrangeEditText.setError("Delivery range is required");
+                } else if(sellerAddress.length() == 0){
+                    sellerAddressEditText.findFocus();
+                    sellerAddressEditText.setError("Address is required");
+                } else if(lat == 0&& lon ==0 )
+                    Toast.makeText(getApplicationContext(), "Please pick a location", Toast.LENGTH_SHORT).show();
 
                 DataManager.getDataManager().sellerRegistration(getsellerparams(sellerdeliverrange, sellerAddress, lat, lon), new RetrofitCallBack<Seller>() {
                     @Override

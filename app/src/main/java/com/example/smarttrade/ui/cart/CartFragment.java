@@ -1,10 +1,12 @@
 package com.example.smarttrade.ui.cart;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -13,10 +15,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smarttrade.R;
+import com.example.smarttrade.ViewDetails;
 import com.example.smarttrade.adapters.CartAdapter;
 import com.example.smarttrade.config.DataManager;
 import com.example.smarttrade.interfaces.RetrofitCallBack;
 import com.example.smarttrade.models.Cart;
+import com.example.smarttrade.models.DeleteModel;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -28,6 +32,7 @@ public class CartFragment extends Fragment {
     private TextView emptyCart;
     private CartAdapter cartAdapter;
     private CartAdapter.CartAdapterInterface cartAdapterInterface;
+    private  ArrayList<Cart> carts;
 
 
 
@@ -48,14 +53,33 @@ public class CartFragment extends Fragment {
         cartAdapterInterface = new CartAdapter.CartAdapterInterface() {
             @Override
             public void onViewDetailsClicked(String productId) {
-
+                startActivity(new Intent(getActivity(), ViewDetails.class).putExtra("productId", productId));
             }
 
             @Override
             public void onRemoveClicked(String cartId) {
+                DataManager.getDataManager().removeCart(cartId, new RetrofitCallBack<DeleteModel>() {
+                    @Override
+                    public void Success(DeleteModel data) {
+                        Toast.makeText(getContext(), "Item removed", Toast.LENGTH_LONG).show();
+                        getCartItems();
+                    }
 
+                    @Override
+                    public void Failure(String error) {
+
+                    }
+                });
             }
         };
+
+        carts = new ArrayList();
+        cartAdapter = new CartAdapter(getActivity(), carts, cartAdapterInterface);
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        cartItems.setLayoutManager(mLayoutManager);
+        cartItems.setAdapter(cartAdapter);
+        cartItems.setHasFixedSize(true);
 
         getCartItems();
     }
@@ -72,12 +96,11 @@ public class CartFragment extends Fragment {
 
                     cartItems.setVisibility(View.VISIBLE);
                     emptyCart.setVisibility(View.GONE);
-                    cartAdapter = new CartAdapter(getActivity(), data, cartAdapterInterface);
+                    carts.clear();
+                    int cartSize =  data.size();
+                    for(int i=0; i<cartSize; i++)
+                        carts.add(data.get(i));
 
-                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-                    cartItems.setLayoutManager(mLayoutManager);
-                    cartItems.setAdapter(cartAdapter);
-                    cartItems.setHasFixedSize(true);
                     cartAdapter.notifyDataSetChanged();
                 }
             }

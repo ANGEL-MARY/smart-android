@@ -17,7 +17,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
             if(Session.getUserType().equals("seller"))
-                startActivity(new Intent(this, SellerMainActivity.class));
+                startActivity(new Intent(this, MainActivity.class));
             else
                 startActivity(new Intent(this, MainActivity.class));
 

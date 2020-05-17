@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
+    android:id="@+id/product_card"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -25,7 +26,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/apple"/>
+                app:srcCompat="@drawable/item"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -44,7 +45,11 @@
                     android:textSize="18dp"
                     android:layout_marginTop="8dp"
                     android:ellipsize="end"
-                    android:maxLines="1"/>
+                    android:maxLines="1"
+                    android:shadowColor="#bbbbbb"
+                    android:shadowDx="1"
+                    android:shadowDy="2"
+                    android:shadowRadius="2"/>
 
                 <TextView
                     android:id="@+id/priceValue"

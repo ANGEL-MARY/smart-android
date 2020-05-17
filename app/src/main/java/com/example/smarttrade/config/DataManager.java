@@ -8,6 +8,7 @@ import com.example.smarttrade.interfaces.RetrofitCallBack;
 import com.example.smarttrade.models.Auth;
 import com.example.smarttrade.models.Buyer;
 import com.example.smarttrade.models.Cart;
+import com.example.smarttrade.models.DeleteModel;
 import com.example.smarttrade.models.Product;
 import com.example.smarttrade.models.ResponseResult;
 import com.example.smarttrade.models.Seller;
@@ -255,6 +256,7 @@ public class DataManager {
             public void onResponse(Call<ResponseResult<Cart>> call, Response<ResponseResult<Cart>> response) {
                 if(response.isSuccessful()){
                     if(response.body().getSuccess()){
+
                         retrofitCallBack.Success(response.body().getData());
                     }else{
                         retrofitCallBack.Failure("Something went wrong");
@@ -266,18 +268,19 @@ public class DataManager {
 
             @Override
             public void onFailure(Call<ResponseResult<Cart>> call, Throwable t) {
+
                 retrofitCallBack.Failure("Some error happened !!");
             }
         });
     }
 
-    public  void removeCart(String cartId, final  RetrofitCallBack<String> retrofitCallBack){
-        Call<ResponseResult<String>> responseCall =  appAPIInterface.removeCart(cartId);
-        responseCall.enqueue(new Callback<ResponseResult<String>>() {
+    public  void removeCart(String cartId, final  RetrofitCallBack<DeleteModel> retrofitCallBack){
+        Call<ResponseResult<DeleteModel>> responseCall = appAPIInterface.removeCart(cartId);
+        responseCall.enqueue(new Callback<ResponseResult<DeleteModel>>() {
             @Override
-            public void onResponse(Call<ResponseResult<String>> call, Response<ResponseResult<String>> response) {
+            public void onResponse(Call<ResponseResult<DeleteModel>> call, Response<ResponseResult<DeleteModel>> response) {
                 if(response.isSuccessful()){
-                    if(response.body().getSuccess().equals("true")){
+                    if(response.body().getSuccess()){
                         retrofitCallBack.Success(response.body().getData());
                     }else{
                         retrofitCallBack.Failure("Something went wrong");
@@ -288,8 +291,8 @@ public class DataManager {
             }
 
             @Override
-            public void onFailure(Call<ResponseResult<String>> call, Throwable t) {
-                retrofitCallBack.Failure("Some error happened !!");
+            public void onFailure(Call<ResponseResult<DeleteModel>> call, Throwable t) {
+
             }
         });
     }

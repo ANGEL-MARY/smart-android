@@ -3,6 +3,7 @@ package com.example.smarttrade.retrofit;
 import com.example.smarttrade.models.Auth;
 import com.example.smarttrade.models.Buyer;
 import com.example.smarttrade.models.Cart;
+import com.example.smarttrade.models.DeleteModel;
 import com.example.smarttrade.models.Product;
 import com.example.smarttrade.models.ResponseResult;
 import com.example.smarttrade.models.Seller;
@@ -61,11 +62,11 @@ public interface AppAPIInterface {
 
     @Headers({"Accept: application/json"})
     @FormUrlEncoded()
-    @POST("carts/")
+    @POST("cart/")
     Call<ResponseResult<Cart>> addCart(@FieldMap HashMap<String, String> cartParams);
 
-    @DELETE("carts/{cartId}")
-    Call<ResponseResult<String>> removeCart(@Path("cartId") String cartId);
+    @DELETE("cart/{cartId}")
+    Call<ResponseResult<DeleteModel>> removeCart(@Path("cartId") String cartId);
 
     // Orders
 
