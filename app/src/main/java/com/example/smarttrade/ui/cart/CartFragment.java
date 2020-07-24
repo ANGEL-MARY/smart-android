@@ -24,6 +24,7 @@ import com.example.smarttrade.models.DeleteModel;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CartFragment extends Fragment {
 
@@ -73,6 +74,18 @@ public class CartFragment extends Fragment {
             }
         };
 
+        buyNowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<String> cartIds = new ArrayList();
+                int cartSize =  carts.size();
+                for(int i=0; i<cartSize; i++)
+                     cartIds.add(carts.get(i).getId());
+
+            }
+        });
+
+
         carts = new ArrayList();
         cartAdapter = new CartAdapter(getActivity(), carts, cartAdapterInterface);
 
@@ -84,6 +97,26 @@ public class CartFragment extends Fragment {
         getCartItems();
     }
 
+    private HashMap<String, String> getOrderItemsParams(ArrayList<String> cartIds) {
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("carts", cartIds.toString());
+        return hashMap;
+    }
+
+    private void orderItem(ArrayList<String> cartIds){
+        DataManager.getDataManager().addToOrders(getOrderItemsParams(cartIds), new RetrofitCallBack<String>() {
+            @Override
+            public void Success(String data) {
+                
+            }
+
+            @Override
+            public void Failure(String error) {
+
+            }
+        });
+    }
 
     public  void  getCartItems(){
         DataManager.getDataManager().getCarts(new RetrofitCallBack<ArrayList<Cart>>() {

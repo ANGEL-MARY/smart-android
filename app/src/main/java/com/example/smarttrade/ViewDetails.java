@@ -16,10 +16,15 @@ import com.bumptech.glide.Glide;
 import com.example.smarttrade.config.DataManager;
 import com.example.smarttrade.interfaces.RetrofitCallBack;
 import com.example.smarttrade.models.Cart;
+import com.example.smarttrade.models.Order;
 import com.example.smarttrade.models.Product;
 import com.example.smarttrade.retrofit.AppClient;
 import com.google.android.material.button.MaterialButton;
+import com.google.gson.Gson;
 
+import org.json.JSONArray;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ViewDetails extends AppCompatActivity {
@@ -77,12 +82,24 @@ public class ViewDetails extends AppCompatActivity {
         BuynowButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                if(product!= null){
+                    DataManager.getDataManager().buyNow(getParams(product.getId(), product.getPrice()), new RetrofitCallBack<Order>() {
+                        @Override
+                        public void Success(Order data) {
 
+                            Toast.makeText(getApplicationContext(), "Order dispatched", Toast.LENGTH_LONG).show();
+                        }
 
+                        @Override
+                        public void Failure(String error) {
+                            Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
             }
 
         });
-        getProdcut(productId);
+        getProduct(productId);
     }
 
 
@@ -93,8 +110,15 @@ public class ViewDetails extends AppCompatActivity {
         return hashMap;
     }
 
+    private HashMap<String, String> getParams(String productId , String currentPrice) {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("product", productId);
+        hashMap.put("current_price", currentPrice);
 
-    public  void  getProdcut(final String productId){
+        return hashMap;
+    }
+
+    public  void  getProduct(final String productId){
         DataManager.getDataManager().getProduct(productId, new RetrofitCallBack<Product>() {
             @Override
             public void Success(Product data) {

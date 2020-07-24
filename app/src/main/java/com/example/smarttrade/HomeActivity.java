@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.smarttrade.config.Session;
 
@@ -15,9 +16,10 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         if(Session.getUserVerification()){
 
-
-            if(Session.getUserType().equals("seller"))
-                startActivity(new Intent(this, MainActivity.class));
+            if(Session.getUserType().equals("seller")) {
+                Toast.makeText(getApplicationContext(), Session.getUserType(), Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, SellerMainActivity.class));
+            }
             else
                 startActivity(new Intent(this, MainActivity.class));
 

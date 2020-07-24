@@ -4,6 +4,7 @@ import com.example.smarttrade.models.Auth;
 import com.example.smarttrade.models.Buyer;
 import com.example.smarttrade.models.Cart;
 import com.example.smarttrade.models.DeleteModel;
+import com.example.smarttrade.models.Order;
 import com.example.smarttrade.models.Product;
 import com.example.smarttrade.models.ResponseResult;
 import com.example.smarttrade.models.Seller;
@@ -17,6 +18,7 @@ import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -70,5 +72,28 @@ public interface AppAPIInterface {
 
     // Orders
 
+    @GET("orders/")
+    Call<ResponseResult<ArrayList<Order>>> getOrders();
 
+    @GET("orders/seller")
+    Call<ResponseResult<ArrayList<Order>>> getSellerOrders();
+
+    @Headers({"Accept: application/json"})
+    @FormUrlEncoded()
+    @POST("orders/")
+    Call<ResponseResult<String>> addToOrders(@FieldMap HashMap<String, String> params);
+
+    @Headers({"Accept: application/json"})
+    @FormUrlEncoded()
+    @POST("orders/buy_now")
+    Call<ResponseResult<Order>> buyNow(@FieldMap HashMap<String, String> params);
+
+    @GET("orders/{orderId}")
+    Call<ResponseResult<Order>> getOrder(@Path("orderId") String orderId);
+
+    @PATCH("orders/{orderId}")
+    Call<ResponseResult<Order>> updateOrder(@Path("orderId") String orderId);
+
+    @DELETE("orders/{orderId}")
+    Call<ResponseResult<DeleteModel>> removeOrder(@Path("orderId") String orderId);
 }

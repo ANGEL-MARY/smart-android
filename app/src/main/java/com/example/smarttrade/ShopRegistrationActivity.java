@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.smarttrade.config.DataManager;
+import com.example.smarttrade.config.Session;
 import com.example.smarttrade.interfaces.RetrofitCallBack;
 import com.example.smarttrade.models.Buyer;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -88,9 +89,11 @@ public class ShopRegistrationActivity extends AppCompatActivity {
                     locationEditText.findFocus();
                 }
                 else if(lat == 0&& lon ==0 )
-                    Toast.makeText(getApplicationContext(), "Please pick a location", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please pick a loc", Toast.LENGTH_SHORT).show();
 
-                if(shopname.length() == 0 && storetype.length() == 0 && location.length() == 0 && lat == 0&& lon ==0 )
+                if(shopname.length() == 0 && storetype.length() == 0 && location.length() == 0 && lat > 0  )
+                    Toast.makeText(getApplicationContext(), "Nice workPlease pick a loc", Toast.LENGTH_SHORT).show();
+
                     DataManager.getDataManager().buyerRegistration(getbuyerparams(shopname, storetype, location, lat, lon), new RetrofitCallBack<Buyer>() {
                         @Override
                         public void Success(Buyer data) {

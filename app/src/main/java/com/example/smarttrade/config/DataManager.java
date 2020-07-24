@@ -9,6 +9,7 @@ import com.example.smarttrade.models.Auth;
 import com.example.smarttrade.models.Buyer;
 import com.example.smarttrade.models.Cart;
 import com.example.smarttrade.models.DeleteModel;
+import com.example.smarttrade.models.Order;
 import com.example.smarttrade.models.Product;
 import com.example.smarttrade.models.ResponseResult;
 import com.example.smarttrade.models.Seller;
@@ -220,8 +221,6 @@ public class DataManager {
         });
     }
 
-
-
     ////////////
     //  Cart  //
     ////////////
@@ -276,6 +275,129 @@ public class DataManager {
 
     public  void removeCart(String cartId, final  RetrofitCallBack<DeleteModel> retrofitCallBack){
         Call<ResponseResult<DeleteModel>> responseCall = appAPIInterface.removeCart(cartId);
+        responseCall.enqueue(new Callback<ResponseResult<DeleteModel>>() {
+            @Override
+            public void onResponse(Call<ResponseResult<DeleteModel>> call, Response<ResponseResult<DeleteModel>> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getSuccess()){
+                        retrofitCallBack.Success(response.body().getData());
+                    }else{
+                        retrofitCallBack.Failure("Something went wrong");
+                    }
+                }else {
+                    retrofitCallBack.Failure("Some error happened !!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseResult<DeleteModel>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    ///////////////
+    //  Orders  //
+    /////////////
+
+    public void addToOrders(HashMap<String, String> orderParams, final  RetrofitCallBack<String> retrofitCallBack){
+        Call<ResponseResult<String>> responseCall =  appAPIInterface.addToOrders(orderParams);
+        responseCall.enqueue(new Callback<ResponseResult<String>>() {
+            @Override
+            public void onResponse(Call<ResponseResult<String>> call, Response<ResponseResult<String>> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getSuccess()){
+                        retrofitCallBack.Success(response.body().getData());
+                    }else{
+                        retrofitCallBack.Failure("Something went wrong");
+                    }
+                }else {
+                    retrofitCallBack.Failure("Some error happened !!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseResult<String>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public  void  buyNow(HashMap<String, String> orderParams, final  RetrofitCallBack<Order> retrofitCallBack){
+        Call<ResponseResult<Order>> responseCall = appAPIInterface.buyNow(orderParams);
+        responseCall.enqueue(new Callback<ResponseResult<Order>>() {
+            @Override
+            public void onResponse(Call<ResponseResult<Order>> call, Response<ResponseResult<Order>> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getSuccess()){
+                        retrofitCallBack.Success(response.body().getData());
+                    }else{
+                        retrofitCallBack.Failure("Something went wrong");
+                    }
+                }else {
+                    retrofitCallBack.Failure("Some error happened !!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseResult<Order>> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    public void getOrders(final RetrofitCallBack<ArrayList<Order>> retrofitCallBack){
+        Call<ResponseResult<ArrayList<Order>>> responseCall = appAPIInterface.getOrders();
+        responseCall.enqueue(new Callback<ResponseResult<ArrayList<Order>>>() {
+            @Override
+            public void onResponse(Call<ResponseResult<ArrayList<Order>>> call, Response<ResponseResult<ArrayList<Order>>> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getSuccess()){
+                        retrofitCallBack.Success(response.body().getData());
+                    }else{
+                        retrofitCallBack.Failure("Something went wrong");
+                    }
+                }else {
+                    retrofitCallBack.Failure("Some error happened !!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseResult<ArrayList<Order>>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void getSellerOrders(final RetrofitCallBack<ArrayList<Order>> retrofitCallBack){
+        Call<ResponseResult<ArrayList<Order>>> responseCall = appAPIInterface.getSellerOrders();
+        responseCall.enqueue(new Callback<ResponseResult<ArrayList<Order>>>() {
+            @Override
+            public void onResponse(Call<ResponseResult<ArrayList<Order>>> call, Response<ResponseResult<ArrayList<Order>>> response) {
+                if(response.isSuccessful()){
+                    if(response.body().getSuccess()){
+                        retrofitCallBack.Success(response.body().getData());
+                    }else{
+                        retrofitCallBack.Failure("Something went wrong");
+                    }
+                }else {
+                    retrofitCallBack.Failure("Some error happened !!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseResult<ArrayList<Order>>> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+
+
+    public  void removeOrder(String orderId, final  RetrofitCallBack<DeleteModel> retrofitCallBack ){
+        Call<ResponseResult<DeleteModel>> responseCall = appAPIInterface.removeOrder(orderId);
         responseCall.enqueue(new Callback<ResponseResult<DeleteModel>>() {
             @Override
             public void onResponse(Call<ResponseResult<DeleteModel>> call, Response<ResponseResult<DeleteModel>> response) {

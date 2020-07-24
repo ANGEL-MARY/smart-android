@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.smarttrade.config.DataManager;
+import com.example.smarttrade.config.Session;
 import com.example.smarttrade.interfaces.RetrofitCallBack;
 import com.example.smarttrade.models.Seller;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -89,7 +90,7 @@ public class SellerActivity extends AppCompatActivity{
                 DataManager.getDataManager().sellerRegistration(getsellerparams(sellerdeliverrange, sellerAddress, lat, lon), new RetrofitCallBack<Seller>() {
                     @Override
                     public void Success(Seller data) {
-
+                        Session.setUserType("seller");
                         startActivity(new Intent(getApplication(), SellerMainActivity.class)
                                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                     }

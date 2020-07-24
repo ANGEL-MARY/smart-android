@@ -158,10 +158,10 @@ public class OtpVerificationActivity extends AppCompatActivity {
                     Session.setUserType(userType);
                     Toast.makeText(getApplicationContext(), userType, Toast.LENGTH_LONG).show();
                     if(userType.equals("seller"))
-                        startActivity(new Intent(OtpVerificationActivity.this, MainActivity.class)
+                        startActivity(new Intent(OtpVerificationActivity.this, SellerMainActivity.class)
                                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                     else
-                        startActivity(new Intent(OtpVerificationActivity.this, SellerMainActivity.class)
+                        startActivity(new Intent(OtpVerificationActivity.this, MainActivity.class)
                                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 }else
                     startActivity(new Intent(OtpVerificationActivity.this, EntryActivity.class));

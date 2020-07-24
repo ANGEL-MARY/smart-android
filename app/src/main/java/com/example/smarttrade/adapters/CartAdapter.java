@@ -83,6 +83,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ProductViewHol
             name = view.findViewById(R.id.productName);
             viewDetails = view.findViewById(R.id.view_details);
             removeItem = view.findViewById(R.id.remove_cart);
+
         }
     }
 }

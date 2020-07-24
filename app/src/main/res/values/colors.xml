@@ -6,7 +6,8 @@
     <color name="background">#3a3d3b</color>
     <color name="textColor">#5D5B6A</color>
     <color name="textWhite">#FEFEFE</color>
-
+    <color name="accept">#03B83F</color>
+    <color name="reject">#A5002E</color>
     <color name="line_grey">#c7c6c6</color>
     <color name="grey_text">#888888</color>
 </resources>

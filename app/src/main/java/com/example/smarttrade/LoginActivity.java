@@ -110,9 +110,6 @@ public class LoginActivity extends AppCompatActivity {
 
                             if (!status)
                                 return;
-                            Toast.makeText(LoginActivity.this, "Login", Toast.LENGTH_SHORT);
-
-
                             startActivity(new Intent(getApplicationContext(), OtpVerificationActivity.class)
                                     .putExtra("phone",phone)
                                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
@@ -144,8 +141,8 @@ public class LoginActivity extends AppCompatActivity {
     private HashMap<String, String> getLoginParams(String phoneNumber, String name) {
 
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("phone", phoneNumber);
-        hashMap.put("name", name);
+        hashMap.put("phone", phoneNumber.trim());
+        hashMap.put("name", name.trim());
         hashMap.put("via", "sms");
         return hashMap;
     }
